@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="d-flex flex-column my-auto justify-content-center align-items-center col-6 h-100 ">
+    <div clas="mx-auto"><p class="fs-1 fw-bold mx-auto">INNOVA TEC</p></div>
+    <div class="col-lg-2 my-2">
+      <div>
+        <img
+          src="assets/images/logoMulticolorh.png"
+          alt=""
+          class="img-fluid rounded-circle avatar"
+        />
+      </div>
+    </div>
+    <div class="card p-3 mb-0 col-8 mx-auto">
+      <div class="card-body">
+        <div class="mb-0 border-0 p-md-5 p-lg-0 p-4">
+          <div class="card pt-0">
+            <form [formGroup]="signInForm" (ngSubmit)="login()" class="my-4">
+              <div class="form-group mb-3">
+                <label for="emailaddress" class="form-label fs-4"
+                  >Correo Electrónico</label
+                >
+                <input
+                  class="form-control"
+                  type="email"
+                  formControlName="email"
+                  [ngClass]="{
+                    'is-invalid': submitted && formValues['email'].errors,
+                  }"
+                  id="emailaddress"
+                  required=""
+                  placeholder="Ingrese su correo electrónico"
+                />
+              </div>
+
+              <div class="form-group mb-3">
+                <label for="password" class="form-label fs-4">Contraseña</label>
+                <input
+                  class="form-control"
+                  type="password"
+                  formControlName="password"
+                  [ngClass]="{
+                    'is-invalid': submitted && formValues['password'].errors,
+                  }"
+                  required=""
+                  id="password"
+                  placeholder="Ingrese su contraseña"
+                />
+              </div>
+
+              <div class="form-group mb-0 row">
+                <div class="col-12">
+                  <div class="d-grid">
+                    <button class="btn btn-primary" type="submit">
+                      Iniciar Sesión
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <!--<div class="text-center text-muted mb-4">
+              <p class="mb-0">
+                Don't have an account ?<a
+                  class="text-primary ms-2 fw-medium"
+                  routerLink="/auth/register"
+                  >Sing up</a
+                >
+              </p>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-6 d-none d-xl-inline-block">
+    <div class="account-page-bg rounded-4">
+                      <div class="auth-user-review text-center">
+                          <ngb-carousel [showNavigationArrows]="false" [showNavigationIndicators]="false" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                               <ng-template ngbSlide class="carousel-item active">
+                                      <p class="prelead mb-2">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621c.537-.278 1.24-.375 1.929-.311c1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5a3.87 3.87 0 0 1-2.748-1.179m10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621c.537-.278 1.24-.375 1.929-.311c1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5a3.87 3.87 0 0 1-2.748-1.179"/></svg>
+                                           Simposio UMG 2025.
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="M19.417 6.679C20.447 7.773 21 9 21 10.989c0 3.5-2.456 6.637-6.03 8.188l-.893-1.378c3.335-1.804 3.987-4.145 4.248-5.621c-.537.278-1.24.375-1.93.311c-1.804-.167-3.226-1.648-3.226-3.489a3.5 3.5 0 0 1 3.5-3.5c1.073 0 2.1.49 2.748 1.179m-10 0C10.447 7.773 11 9 11 10.989c0 3.5-2.456 6.637-6.03 8.188l-.893-1.378c3.335-1.804 3.987-4.145 4.247-5.621c-.537.278-1.24.375-1.929.311C4.591 12.323 3.17 10.842 3.17 9a3.5 3.5 0 0 1 3.5-3.5c1.073 0 2.1.49 2.748 1.179"/></svg>
+                                      </p>
+                                  </ng-template>
+
+                                  <ng-template ngbSlide class="carousel-item">
+                                      <p class="prelead mb-2">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621c.537-.278 1.24-.375 1.929-.311c1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5a3.87 3.87 0 0 1-2.748-1.179m10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621c.537-.278 1.24-.375 1.929-.311c1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5a3.87 3.87 0 0 1-2.748-1.179"/></svg>
+                                              INNOVA TEC
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="M19.417 6.679C20.447 7.773 21 9 21 10.989c0 3.5-2.456 6.637-6.03 8.188l-.893-1.378c3.335-1.804 3.987-4.145 4.248-5.621c-.537.278-1.24.375-1.93.311c-1.804-.167-3.226-1.648-3.226-3.489a3.5 3.5 0 0 1 3.5-3.5c1.073 0 2.1.49 2.748 1.179m-10 0C10.447 7.773 11 9 11 10.989c0 3.5-2.456 6.637-6.03 8.188l-.893-1.378c3.335-1.804 3.987-4.145 4.247-5.621c-.537.278-1.24.375-1.929.311C4.591 12.323 3.17 10.842 3.17 9a3.5 3.5 0 0 1 3.5-3.5c1.073 0 2.1.49 2.748 1.179"/></svg>
+                                      </p>
+                                  </ng-template>
+
+                                  <ng-template ngbSlide class="carousel-item">
+                                      <p class="prelead mb-2">
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621c.537-.278 1.24-.375 1.929-.311c1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5a3.87 3.87 0 0 1-2.748-1.179m10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621c.537-.278 1.24-.375 1.929-.311c1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 0 1-3.5 3.5a3.87 3.87 0 0 1-2.748-1.179"/></svg>
+                                          conoceréis la verdad y la verdad os hará libre.
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="#ffffff" d="M19.417 6.679C20.447 7.773 21 9 21 10.989c0 3.5-2.456 6.637-6.03 8.188l-.893-1.378c3.335-1.804 3.987-4.145 4.248-5.621c-.537.278-1.24.375-1.93.311c-1.804-.167-3.226-1.648-3.226-3.489a3.5 3.5 0 0 1 3.5-3.5c1.073 0 2.1.49 2.748 1.179m-10 0C10.447 7.773 11 9 11 10.989c0 3.5-2.456 6.637-6.03 8.188l-.893-1.378c3.335-1.804 3.987-4.145 4.247-5.621c-.537.278-1.24.375-1.929.311C4.591 12.323 3.17 10.842 3.17 9a3.5 3.5 0 0 1 3.5-3.5c1.073 0 2.1.49 2.748 1.179"/></svg>
+                                      </p>
+                                  </ng-template>
+                          </ngb-carousel>
+                      </div>
+                  </div>
+    </div>
+
+</div>

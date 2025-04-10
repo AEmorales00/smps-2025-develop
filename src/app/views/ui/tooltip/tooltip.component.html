@@ -1,0 +1,189 @@
+<breadcrumb [title]="'Components'" [subtitle]="'Tooltip'" />
+
+<div class="row">
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Examples</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <p class="muted">
+          Placeholder text to demonstrate some
+          <a
+            href="javascript:void(0);"
+            data-bs-toggle="tooltip"
+            ngbTooltip="Default tooltip"
+            >inline links</a
+          >
+          with tooltips. This is now just filler, no killer. Content placed here
+          just to mimic the presence of
+          <a
+            href="javascript:void(0);"
+            data-bs-toggle="tooltip"
+            ngbTooltip="Another tooltip"
+            >real text</a
+          >. And all that just to give you an idea of how tooltips would look
+          when used in real-world situations. So hopefully you've now seen how
+          <a
+            href="javascript:void(0);"
+            data-bs-toggle="tooltip"
+            ngbTooltip="Another one here too"
+            >these tooltips on links</a
+          >
+          can work in practice, once you use them on
+          <a
+            href="javascript:void(0);"
+            data-bs-toggle="tooltip"
+            ngbTooltip="The last tip!"
+            >your own</a
+          >
+          site or project.
+        </p>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Custom Tooltip</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div class="d-flex flex-wrap gap-2">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="tooltip"
+            placement="top"
+            data-bs-custom-class="custom-tooltip"
+            ngbTooltip="This top tooltip is themed via CSS variables."
+          >
+            Custom tooltip
+          </button>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+
+  <!-- Four Directions  -->
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Four Directions</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div class="d-flex flex-wrap gap-2">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="tooltip"
+            placement="top"
+            ngbTooltip="Tooltip on top"
+          >
+            Tooltip on top
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="tooltip"
+            placement="right"
+            ngbTooltip="Tooltip on right"
+          >
+            Tooltip on right
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="tooltip"
+            placement="bottom"
+            ngbTooltip="Tooltip on bottom"
+          >
+            Tooltip on bottom
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="tooltip"
+            placement="left"
+            ngbTooltip="Tooltip on left"
+          >
+            Tooltip on left
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="tooltip"
+            data-bs-html="true"
+            ngbTooltip="<em>Tooltip</em> <u>with</u> <b>HTML</b>"
+          >
+            Tooltip with HTML
+          </button>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+
+  <!-- HTML -->
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">HTML Tags</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div class="d-flex flex-wrap gap-2">
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="tooltip"
+            data-bs-html="true"
+            ngbTooltip="<em>Tooltip</em> <u>with</u> <b>HTML</b>"
+          >
+            Tooltip with HTML
+          </button>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Disabled Tooltips</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div class="d-flex flex-wrap gap-2">
+          <span
+            class="d-inline-block"
+            tabindex="0"
+            data-bs-toggle="tooltip"
+            ngbTooltip="Disabled tooltip"
+          >
+            <button class="btn btn-primary" type="button" disabled>
+              Disabled button
+            </button>
+          </span>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+</div>

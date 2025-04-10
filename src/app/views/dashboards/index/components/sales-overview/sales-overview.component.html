@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex align-items-center">
+            <h5 class="card-title mb-0">Sales Overview</h5>
+
+            <div class="ms-auto" ngbDropdown [placement]="'bottom-end'">
+                <button ngbDropdownToggle class="btn btn-sm bg-light border dropdown-toggle fw-medium" type="button"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">This Month<i
+                        class="mdi mdi-chevron-down ms-1 fs-14"></i></button>
+                <div class="dropdown-menu dropdown-menu-end" ngbDropdownMenu>
+                    <a class="dropdown-item" href="#">This Month</a>
+                    <a class="dropdown-item" href="#">Last Month</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div id="sales-overview" class="apex-charts">
+            <apx-chart [series]="saleOverview.series!" [dataLabels]="saleOverview.dataLabels!"
+            [fill]="saleOverview.fill!" [stroke]="saleOverview.stroke!" [grid]="saleOverview.grid!"
+             [chart]="saleOverview.chart!" [colors]="saleOverview.colors!" [xaxis]="saleOverview.xaxis!"
+             [yaxis]="saleOverview.yaxis!" [legend]="saleOverview.legend!"/>
+        </div>
+    </div>
+</div>

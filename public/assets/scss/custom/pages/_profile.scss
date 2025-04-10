@@ -1,0 +1,64 @@
+// 
+// Profile.scss
+//
+
+.profile-bg-picture {
+}
+.social-item {
+    height: 1.5rem;
+    width: 1.5rem;
+    display: flex;
+    line-height: 20px;
+    border: 2px solid var(--#{$prefix}border-color);
+    border-radius: 50%;
+    color: $gray-500;
+}
+.profile-section {
+    .profile-item {
+        position: relative;
+        padding-bottom: 24px;
+        padding-left: 35px;
+        // border-left: 2px solid $primary;
+        .profile-icon {
+            position: absolute;
+            top: -6px;
+            left: -20px;
+        }
+    }
+}
+
+.list-inline-dots {
+    .list-inline-item-second {
+        &::before {
+            content: " · ";
+            margin-inline-end: .5rem;
+        }    
+    }
+}
+
+.hando-main-sections {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.hando-profile-main {
+    position: relative;
+    .sil-profile_main-pic-change {
+        cursor: pointer;
+        background-color: $primary;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        left: -10px;
+        top: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        box-shadow: 0 0 20px 0 rgba(250, 251, 251, .05);
+        border: 3px solid #fff;
+    }
+}

@@ -1,0 +1,151 @@
+<!-- Left Sidebar Start -->
+<div class="app-sidebar-menu">
+  <ngx-simplebar class="h-100">
+    <!--- Sidemenu -->
+    <div id="sidebar-menu">
+      <div class="logo-box">
+        <a routerLink="/" class="">
+          <span class="">
+            <img src="assets/images/logoMulticolorv.png" alt="" height="70" />
+          </span>
+        </a>
+      </div>
+
+      <ul id="side-menu">
+        @for (item of menuItems; track $index) {
+          @if (item.isTitle) {
+            <li class="menu-title">{{ item.label }}</li>
+          } @else {
+            @if (hasSubmenu(item)) {
+              <ng-container
+                *ngTemplateOutlet="
+                  MenuItemWithChildren;
+                  context: {
+                    menu: item,
+                    linkClassName: 'nav-link-ref tp-link',
+                    subMenuClassNames: 'nav-second-level',
+                  }
+                "
+              >
+              </ng-container>
+            } @else {
+              <ng-container
+                *ngTemplateOutlet="
+                  MenuItem;
+                  context: {
+                    menu: item,
+                    linkClassName: 'nav-link-ref tp-link ',
+                  }
+                "
+              >
+              </ng-container>
+            }
+          }
+        }
+      </ul>
+    </div>
+    <!-- End Sidebar -->
+
+    <div class="clearfix"></div>
+  </ngx-simplebar>
+</div>
+<!-- Left Sidebar End -->
+<ng-template #MenuItemLink let-menu="menu" let-className="className">
+  <a
+    [routerLink]="menu.url"
+    [class]="className"
+    [ngClass]="{
+      active: activeMenuItems.includes(menu.key),
+      disabled: menu.isDisabled,
+    }"
+    [attr.aria-controls]="menu.key"
+  >
+    @if (menu.icon) {
+      <i [attr.data-feather]="menu.icon"></i>
+      <span> {{ menu.label }} </span>
+    } @else {
+      {{ menu.label }}
+    }
+  </a>
+</ng-template>
+
+<ng-template
+  #MenuItem
+  let-itemClassName="itemClassName"
+  let-menu="menu"
+  let-linkClassName="linkClassName"
+>
+  <li
+    [class]="itemClassName"
+    [ngClass]="{ 'menuitem-active': activeMenuItems.includes(menu.key) }"
+  >
+    <ng-container
+      *ngTemplateOutlet="
+        MenuItemLink;
+        context: { menu: menu, className: linkClassName }
+      "
+    >
+    </ng-container>
+  </li>
+</ng-template>
+
+<ng-template
+  #MenuItemWithChildren
+  let-menu="menu"
+  let-linkClassName="linkClassName"
+  let-subMenuClassNames="subMenuClassNames"
+>
+  <li [ngClass]="{ 'menuitem-active': activeMenuItems.includes(menu.key) }">
+    <a
+      [class]="linkClassName"
+      (click)="toggleMenuItem(menu, collapse)"
+      role="button"
+      [attr.aria-expanded]="!menu.collapsed"
+      aria-controls="sidebarDashboards"
+      [attr.aria-controls]="menu.key"
+    >
+      @if (menu.icon) {
+        <i [attr.data-feather]="menu.icon"></i>
+        <span> {{ menu.label }} </span>
+      } @else {
+        {{ menu.label }}
+      }
+      <span class="menu-arrow"></span>
+    </a>
+    <div
+      #collapse="ngbCollapse"
+      [(ngbCollapse)]="menu.collapsed"
+      class="collapse"
+      id="sidebarDashboards"
+    >
+      <ul [class]="subMenuClassNames">
+        @for (child of menu.children; track child.label) {
+          @if (hasSubmenu(child)) {
+            <ng-container
+              *ngTemplateOutlet="
+                MenuItemWithChildren;
+                context: {
+                  menu: child,
+                  subMenuClassNames: 'nav-second-level',
+                  linkClassName: 'nav-link-ref  tp-link',
+                }
+              "
+            >
+            </ng-container>
+          } @else {
+            <ng-container
+              *ngTemplateOutlet="
+                MenuItem;
+                context: {
+                  menu: child,
+                  linkClassName: 'nav-link-ref tp-link',
+                }
+              "
+            >
+            </ng-container>
+          }
+        }
+      </ul>
+    </div>
+  </li>
+</ng-template>

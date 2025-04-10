@@ -1,0 +1,138 @@
+<breadcrumb [title]="'Compponents'" [subtitle]="'Pagination'" />
+<!-- Start Carousel -->
+<div class="row">
+  <div class="col-xl-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Default Pagination</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <ngb-pagination [collectionSize]="60" aria-label="Custom pagination">
+          <ng-template ngbPaginationPrevious>Prev</ng-template>
+          <ng-template ngbPaginationNext>Next</ng-template>
+        </ngb-pagination>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Working With Icons</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <ngb-pagination [collectionSize]="60" aria-label="Custom pagination">
+        </ngb-pagination>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-4">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Disabled and active states</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <nav>
+          <ul class="pagination mb-0">
+            <li class="page-item disabled">
+              <a class="page-link">Previous</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">3</a>
+            </li>
+            <li class="page-item active" aria-current="page">
+              <a class="page-link" href="javascript:void(0);">4</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">5</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">6</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="javascript:void(0);">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Sizing</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <ngb-pagination [collectionSize]="30" size="lg" />
+
+        <ngb-pagination [collectionSize]="30" size="sm" />
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+</div>
+
+<div class="row">
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Alignment</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <ngb-pagination
+          class="d-flex justify-content-center"
+          [collectionSize]="30"
+          [page]="30"
+          aria-label="Custom pagination"
+        >
+          <ng-template ngbPaginationPrevious>Prev</ng-template>
+          <ng-template ngbPaginationNext>Next</ng-template>
+        </ngb-pagination>
+        <ngb-pagination
+          class="d-flex justify-content-end"
+          [collectionSize]="30"
+          [page]="30"
+          aria-label="Custom pagination"
+        >
+          <ng-template ngbPaginationPrevious>Prev</ng-template>
+          <ng-template ngbPaginationNext>Next</ng-template>
+        </ngb-pagination>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+</div>

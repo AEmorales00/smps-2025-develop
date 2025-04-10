@@ -1,0 +1,472 @@
+<breadcrumb [title]="'Components'" [subtitle]="'Scrollspy'" />
+<div class="row">
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Navbar Example</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <nav class="navbar bg-light px-3 mb-3">
+          <span class="navbar-brand">Navbar</span>
+          <ul class="nav nav-pills" [ngbScrollSpyMenu]="s">
+            <li class="nav-item">
+              <button class="nav-link" ngbScrollSpyItem="basic-1">First</button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link" ngbScrollSpyItem="basic-2">
+                Second
+              </button>
+            </li>
+            <li ngbDropdown class="nav-item">
+              <button
+                ngbDropdownToggle
+                class="nav-link"
+                ngbScrollSpyItem="basic-p1"
+              >
+                Dropdown
+              </button>
+              <ul ngbDropdownMenu>
+                <li>
+                  <button
+                    ngbDropdownItem
+                    ngbScrollSpyItem="basic-3"
+                    parent="basic-p1"
+                  >
+                    Third
+                  </button>
+                </li>
+                <li>
+                  <button
+                    ngbDropdownItem
+                    ngbScrollSpyItem="basic-4"
+                    parent="basic-p1"
+                  >
+                    Fourth
+                  </button>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <button
+                    ngbDropdownItem
+                    ngbScrollSpyItem="basic-5"
+                    parent="basic-p1"
+                  >
+                    Fifth
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+
+        <div
+          ngbScrollSpy
+          #s="ngbScrollSpy"
+          rootMargin="0px 0px -40%"
+          class="p-3 rounded-2 mb-3"
+          style="height: 200px"
+        >
+          <h4 ngbScrollSpyFragment="basic-1">First heading</h4>
+          <p>
+            Raw denim you probably haven't heard of them jean shorts Austin.
+            Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
+            cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
+            butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi,
+            qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+            iphone. Seitan aliquip quis cardigan american apparel, butcher
+            voluptate nisi qui.
+          </p>
+          <h4 ngbScrollSpyFragment="basic-2">Second heading</h4>
+          <p>
+            Raw denim you probably haven't heard of them jean shorts Austin.
+            Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
+            cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
+            butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi,
+            qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+            iphone. Seitan aliquip quis cardigan american apparel, butcher
+            voluptate nisi qui.
+          </p>
+          <h4 ngbScrollSpyFragment="basic-3">Third heading</h4>
+          <p>
+            Raw denim you probably haven't heard of them jean shorts Austin.
+            Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
+            cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
+            butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi,
+            qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+            iphone. Seitan aliquip quis cardigan american apparel, butcher
+            voluptate nisi qui.
+          </p>
+          <h4 ngbScrollSpyFragment="basic-4">Fourth heading</h4>
+          <p>
+            Raw denim you probably haven't heard of them jean shorts Austin.
+            Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
+            cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
+            butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi,
+            qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+            iphone. Seitan aliquip quis cardigan american apparel, butcher
+            voluptate nisi qui.
+          </p>
+          <h4 ngbScrollSpyFragment="basic-5">Fifth heading</h4>
+          <p>
+            Raw denim you probably haven't heard of them jean shorts Austin.
+            Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache
+            cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
+            butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi,
+            qui irure terry richardson ex squid. Aliquip placeat salvia cillum
+            iphone. Seitan aliquip quis cardigan american apparel, butcher
+            voluptate nisi qui.
+          </p>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Nested Nav</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">
+            <nav
+              [ngbScrollSpyMenu]="spy"
+              class="h-100 flex-column align-items-stretch pe-4 border-end"
+            >
+              <nav class="nav nav-pills flex-column">
+                <a role="button" class="nav-link" ngbScrollSpyItem="nested-1"
+                  >Item 1</a
+                >
+                <nav class="nav nav-pills flex-column">
+                  <a
+                    role="button"
+                    class="nav-link ms-3 my-1"
+                    ngbScrollSpyItem="nested-1-1"
+                    parent="nested-1"
+                    >Item 1-1</a
+                  >
+                  <a
+                    role="button"
+                    class="nav-link ms-3 my-1"
+                    ngbScrollSpyItem="nested-1-2"
+                    parent="nested-1"
+                    >Item 1-2</a
+                  >
+                </nav>
+                <a role="button" class="nav-link" ngbScrollSpyItem="nested-2"
+                  >Item 2</a
+                >
+                <a role="button" class="nav-link" ngbScrollSpyItem="nested-3"
+                  >Item 3</a
+                >
+                <nav class="nav nav-pills flex-column">
+                  <a
+                    role="button"
+                    class="nav-link ms-3 my-1"
+                    ngbScrollSpyItem="nested-3-1"
+                    parent="nested-3"
+                    >Item 3-1</a
+                  >
+                  <a
+                    role="button"
+                    class="nav-link ms-3 my-1"
+                    ngbScrollSpyItem="nested-3-2"
+                    parent="nested-3"
+                    >Item 3-2</a
+                  >
+                </nav>
+              </nav>
+            </nav>
+          </div>
+
+          <div class="col-8">
+            <div
+              ngbScrollSpy
+              #spy="ngbScrollSpy"
+              rootMargin="16px"
+              class="p-3 rounded-2 mb-3"
+              style="height: 300px"
+            >
+              <h4 ngbScrollSpyFragment="nested-1">Item 1</h4>
+              <p>
+                Raw denim you probably haven't heard of them jean shorts Austin.
+                Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                Mustache cliche tempor, williamsburg carles vegan helvetica.
+                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
+                sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                placeat salvia cillum iphone. Seitan aliquip quis cardigan
+                american apparel, butcher voluptate nisi qui.
+              </p>
+              <h5 ngbScrollSpyFragment="nested-1-1">Item 1-1</h5>
+              <p>
+                Raw denim you probably haven't heard of them jean shorts Austin.
+                Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                Mustache cliche tempor, williamsburg carles vegan helvetica.
+                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
+                sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                placeat salvia cillum iphone. Seitan aliquip quis cardigan
+                american apparel, butcher voluptate nisi qui.
+              </p>
+              <h5 ngbScrollSpyFragment="nested-1-2">Item 1-2</h5>
+              <p>
+                Raw denim you probably haven't heard of them jean shorts Austin.
+                Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                Mustache cliche tempor, williamsburg carles vegan helvetica.
+                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
+                sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                placeat salvia cillum iphone. Seitan aliquip quis cardigan
+                american apparel, butcher voluptate nisi qui.
+              </p>
+              <h4 ngbScrollSpyFragment="nested-2">Item 2</h4>
+              <p>
+                Raw denim you probably haven't heard of them jean shorts Austin.
+                Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                Mustache cliche tempor, williamsburg carles vegan helvetica.
+                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
+                sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                placeat salvia cillum iphone. Seitan aliquip quis cardigan
+                american apparel, butcher voluptate nisi qui.
+              </p>
+              <h4 ngbScrollSpyFragment="nested-3">Item 3</h4>
+              <p>
+                Raw denim you probably haven't heard of them jean shorts Austin.
+                Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                Mustache cliche tempor, williamsburg carles vegan helvetica.
+                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
+                sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                placeat salvia cillum iphone. Seitan aliquip quis cardigan
+                american apparel, butcher voluptate nisi qui.
+              </p>
+              <h5 ngbScrollSpyFragment="nested-3-1">Item 3-1</h5>
+              <p>
+                Raw denim you probably haven't heard of them jean shorts Austin.
+                Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                Mustache cliche tempor, williamsburg carles vegan helvetica.
+                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
+                sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                placeat salvia cillum iphone. Seitan aliquip quis cardigan
+                american apparel, butcher voluptate nisi qui.
+              </p>
+              <h5 ngbScrollSpyFragment="nested-3-2">Item 3-2</h5>
+              <p>
+                Raw denim you probably haven't heard of them jean shorts Austin.
+                Nesciunt tofu stumptown aliqua, retro synth master cleanse.
+                Mustache cliche tempor, williamsburg carles vegan helvetica.
+                Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby
+                sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                placeat salvia cillum iphone. Seitan aliquip quis cardigan
+                american apparel, butcher voluptate nisi qui.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">List group</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">
+            <div id="list-example" class="list-group">
+              <a
+                type="button"
+                class="list-group-item list-group-item-action"
+                [ngbScrollSpyItem]="[scroll, 'items-1']"
+                >Item 1</a
+              >
+              <a
+                type="button"
+                class="list-group-item list-group-item-action"
+                [ngbScrollSpyItem]="scroll"
+                fragment="items-2"
+                >Item 2</a
+              >
+              <a
+                type="button"
+                class="list-group-item list-group-item-action"
+                [ngbScrollSpyItem]="scroll"
+                fragment="items-3"
+                >Item 3</a
+              >
+              <a
+                type="button"
+                class="list-group-item list-group-item-action"
+                [ngbScrollSpyItem]="scroll"
+                fragment="items-4"
+                >Item 4</a
+              >
+            </div>
+          </div>
+
+          <div class="col-8">
+            <div
+              ngbScrollSpy
+              #scroll="ngbScrollSpy"
+              data-bs-spy="scroll"
+              data-bs-target="#list-example"
+              data-bs-smooth-scroll="true"
+              class="scrollspy-example"
+              tabindex="0"
+            >
+              <h4 id="list-item-1" ngbScrollSpyFragment="items-1">Item 1</h4>
+              <p>
+                This is some placeholder content for the scrollspy page. Note
+                that as you scroll down the page, the appropriate navigation
+                link is highlighted. It's repeated throughout the component
+                example. We keep adding some more example copy here to emphasize
+                the scrolling and highlighting.
+              </p>
+              <p>
+                Keep in mind that the JavaScript plugin tries to pick the right
+                element among all that may be visible. Multiple visible
+                scrollspy targets at the same time may cause some issues.
+              </p>
+              <h4 id="list-item-2" ngbScrollSpyFragment="items-2">Item 2</h4>
+              <p>
+                This is some placeholder content for the scrollspy page. Note
+                that as you scroll down the page, the appropriate navigation
+                link is highlighted. It's repeated throughout the component
+                example. We keep adding some more example copy here to emphasize
+                the scrolling and highlighting.
+              </p>
+              <p>
+                Keep in mind that the JavaScript plugin tries to pick the right
+                element among all that may be visible. Multiple visible
+                scrollspy targets at the same time may cause some issues.
+              </p>
+              <h4 id="list-item-3" ngbScrollSpyFragment="items-3">Item 3</h4>
+              <p>
+                This is some placeholder content for the scrollspy page. Note
+                that as you scroll down the page, the appropriate navigation
+                link is highlighted. It's repeated throughout the component
+                example. We keep adding some more example copy here to emphasize
+                the scrolling and highlighting.
+              </p>
+              <p>
+                Keep in mind that the JavaScript plugin tries to pick the right
+                element among all that may be visible. Multiple visible
+                scrollspy targets at the same time may cause some issues.
+              </p>
+              <h4 id="list-item-4" ngbScrollSpyFragment="items-4">Item 4</h4>
+              <p>
+                This is some placeholder content for the scrollspy page. Note
+                that as you scroll down the page, the appropriate navigation
+                link is highlighted. It's repeated throughout the component
+                example. We keep adding some more example copy here to emphasize
+                the scrolling and highlighting.
+              </p>
+              <p>
+                Keep in mind that the JavaScript plugin tries to pick the right
+                element among all that may be visible. Multiple visible
+                scrollspy targets at the same time may cause some issues.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Simple Anchors</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-4">
+            <div
+              id="simple-list-example"
+              class="d-flex flex-column gap-2 simple-list-example-scrollspy text-center"
+            >
+              <a class="p-1 rounded" href="#simple-list-item-1">Item 1</a>
+              <a class="p-1 rounded" href="#simple-list-item-2">Item 2</a>
+              <a class="p-1 rounded" href="#simple-list-item-3">Item 3</a>
+              <a class="p-1 rounded" href="#simple-list-item-4">Item 4</a>
+              <a class="p-1 rounded" href="#simple-list-item-5">Item 5</a>
+            </div>
+          </div>
+          <div class="col-8">
+            <div
+              data-bs-spy="scroll"
+              data-bs-target="#simple-list-example"
+              data-bs-offset="0"
+              data-bs-smooth-scroll="true"
+              class="scrollspy-example"
+              tabindex="0"
+            >
+              <h4 id="simple-list-item-1">Item 1</h4>
+              <p>
+                This is some placeholder content for the scrollspy page. Note
+                that as you scroll down the page, the appropriate navigation
+                link is highlighted. It's repeated throughout the component
+                example. We keep adding some more example copy here to emphasize
+                the scrolling and highlighting.
+              </p>
+              <h4 id="simple-list-item-2">Item 2</h4>
+              <p>
+                This is some placeholder content for the scrollspy page. Note
+                that as you scroll down the page, the appropriate navigation
+                link is highlighted. It's repeated throughout the component
+                example. We keep adding some more example copy here to emphasize
+                the scrolling and highlighting.
+              </p>
+              <h4 id="simple-list-item-3">Item 3</h4>
+              <p>
+                This is some placeholder content for the scrollspy page. Note
+                that as you scroll down the page, the appropriate navigation
+                link is highlighted. It's repeated throughout the component
+                example. We keep adding some more example copy here to emphasize
+                the scrolling and highlighting.
+              </p>
+              <h4 id="simple-list-item-4">Item 4</h4>
+              <p>
+                This is some placeholder content for the scrollspy page. Note
+                that as you scroll down the page, the appropriate navigation
+                link is highlighted. It's repeated throughout the component
+                example. We keep adding some more example copy here to emphasize
+                the scrolling and highlighting.
+              </p>
+              <h4 id="simple-list-item-5">Item 5</h4>
+              <p>
+                This is some placeholder content for the scrollspy page. Note
+                that as you scroll down the page, the appropriate navigation
+                link is highlighted. It's repeated throughout the component
+                example. We keep adding some more example copy here to emphasize
+                the scrolling and highlighting.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->

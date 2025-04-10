@@ -1,0 +1,185 @@
+<breadcrumb [title]="'Components'" [subtitle]="'Collapse'" />
+
+<div class="row">
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Default Collapse</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div class="flex-wrap gap-2">
+          <p class="d-inline-flex gap-1 mb-0">
+            <a
+              class="btn btn-primary"
+              [attr.aria-expanded]="!isCollapsed"
+              (click)="collapse.toggle()"
+              data-bs-toggle="collapse"
+              href="javascript:void(0);"
+              role="button"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              Link with href
+            </a>
+            <button
+              (click)="isCollapsed = !isCollapsed"
+              [attr.aria-expanded]="!isCollapsed"
+              class="btn btn-primary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseExample"
+              aria-expanded="false"
+              aria-controls="collapseExample"
+            >
+              Button with data-bs-target
+            </button>
+          </p>
+          <div
+            class="collapse mt-2"
+            id="collapseExample"
+            #collapse="ngbCollapse"
+            [(ngbCollapse)]="isCollapsed"
+          >
+            <div class="card card-body mb-0">
+              Some placeholder content for the collapse component. This panel is
+              hidden by default but revealed when the user activates the
+              relevant trigger.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Multiple Toggles And Targets</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div class="flex-wrap gap-2">
+          <p class="d-inline-flex gap-1 mb-0">
+            <a
+              class="btn btn-primary"
+              (click)="toggleFirst.toggle()"
+              [attr.aria-expanded]="!isSecondToggle"
+              data-bs-toggle="collapse"
+              href="javascript:void(0);"
+              role="button"
+              aria-expanded="false"
+              aria-controls="multiCollapseExample1"
+              >Toggle first element</a
+            >
+            <button
+              (click)="toggleSecond.toggle()"
+              [attr.aria-expanded]="!isFirstToggle"
+              class="btn btn-primary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#multiCollapseExample2"
+              aria-expanded="false"
+              aria-controls="multiCollapseExample2"
+            >
+              Toggle second element
+            </button>
+            <button
+              (click)="toggleFirst.toggle(); toggleSecond.toggle()"
+              [attr.aria-expanded]="!isSecondToggle && !isFirstToggle"
+              class="btn btn-primary"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target=".multi-collapse"
+              aria-expanded="false"
+              aria-controls="multiCollapseExample1 multiCollapseExample2"
+            >
+              Toggle both elements
+            </button>
+          </p>
+          <div class="row">
+            <div class="col">
+              <div
+                #toggleFirst="ngbCollapse"
+                [(ngbCollapse)]="isFirstToggle"
+                class="collapse multi-collapse mt-2"
+                id="multiCollapseExample1"
+              >
+                <div class="card card-body mb-0">
+                  Some placeholder content for the first collapse component of
+                  this multi-collapse example. This panel is hidden by default
+                  but revealed when the user activates the relevant trigger.
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div
+                #toggleSecond="ngbCollapse"
+                [(ngbCollapse)]="isSecondToggle"
+                class="collapse multi-collapse mt-2"
+                id="multiCollapseExample2"
+              >
+                <div class="card card-body mb-0">
+                  Some placeholder content for the second collapse component of
+                  this multi-collapse example. This panel is hidden by default
+                  but revealed when the user activates the relevant trigger.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Horizontal Collapse</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <p class="mb-0">
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseWidthExample"
+            aria-expanded="false"
+            aria-controls="collapseWidthExample"
+            (click)="horizontalCollapse.toggle()"
+            [attr.aria-expanded]="!isHorizontal"
+          >
+            Toggle width collapse
+          </button>
+        </p>
+        <div style="min-height: 120px">
+          <div
+            #horizontalCollapse="ngbCollapse"
+            [horizontal]="true"
+            [(ngbCollapse)]="isHorizontal"
+            class="collapse collapse-horizontal"
+            id="collapseWidthExample"
+          >
+            <div class="card card-body" style="width: 300px">
+              This is some placeholder content for a horizontal collapse. It's
+              hidden by default and shown when triggered.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+</div>

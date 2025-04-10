@@ -1,0 +1,39 @@
+// 
+// maintenance
+// 
+.maintenance-bg-image {
+    background-image: url(../../../images/svg/shape.svg);
+}
+
+.maintenance-bg {
+    background-color: #f8f8fb;
+}
+.maintenance-pages {
+    align-items: center;
+    display: flex;
+    min-height: 100vh;
+}
+.maintenance-img {
+    max-width: 600px;
+    margin: auto;
+}
+.error-page {
+    max-width: 400px;
+    margin: auto;
+}
+
+.bg-svg {
+    background-image: url(../../../images/svg/shape.svg);
+}
+
+.coming-soon-img {
+    max-width: 500px;
+    margin: auto;
+}
+
+@media (max-width: 767px) {
+    .error-page {
+        max-width: 300px;
+        margin: auto;
+    }
+}

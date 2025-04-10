@@ -1,0 +1,181 @@
+// 
+//  Time Line Page
+// 
+
+.timeline-page {
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 95%;
+        margin: auto;
+        width: 1px;
+        // background-color: $gray-400;
+        border: 1px dashed rgba($primary, 0.30);
+    }
+    .timeline-section {
+        .label-left {
+            float: right;
+            margin-top: 20px;
+            margin-right: 15px;
+            background-color: $white;
+            &:after {
+                right: -34px;
+            }
+        }
+        .label-right {
+            float: left;
+            margin-top: 20px;
+            margin-left: 15px;
+            background-color: $white;
+            &:after {
+                left: -34px;
+            }
+        }
+        .label-left, .label-right {
+            margin-right: 15px;
+        }
+        .description-right {
+            margin-top: 20px;
+            margin-left: 15px;
+            text-align: left;
+        }
+        .description-left {
+            margin-top: 20px;
+            margin-right: 15px;
+            text-align: right;
+        }
+        .title {
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .timeline-subtitle {
+            font-size: 14px;
+            color: $gray-300;
+        }
+    }
+}
+.timeline-page {
+    .timeline-section {
+        .label-left, .label-right {
+            &:after {
+                content: "";
+                position: absolute;
+                top: 12px;
+                width: 16px;
+                height: 16px;
+                z-index: 1;
+                background-color: var(--bs-primary);
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+
+// Timeline Second
+.timeline-second {
+    display: flex;
+    &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        margin: auto;
+        width: 79%;
+        border: 1px dashed rgba($primary, 0.30);
+        top: 40px
+    }
+    .timeline-second-section {
+        align-items: center;
+        display: flex;
+        position: relative;
+        .inner-circle {
+            border-radius: 1.5rem;
+            height: 12px;
+            width: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $primary;
+            position: absolute;
+            top: -43px;
+            left: 0px;
+            &:after {
+                content: "";
+                background-color: rgba($primary, 0.15);
+                display: inline-block;
+                height: 2rem;
+                width: 2rem;
+                min-width: 2rem;
+                border-radius: 6.25rem;
+            }
+        }
+    }
+}
+
+
+
+//  Basic Time line
+
+.simple-timeline {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    list-style: none;
+    .timeline-item {
+        position: relative;
+        padding-left: 1.4rem;
+        border-left: 1px solid $gray-300;
+        .timeline-dot {
+            position: absolute;
+            left: -0.38rem;
+            top: 0;
+            z-index: 2;
+            display: block;
+            height: .75rem;
+            width: .75rem;
+            border-radius: 50%;
+            background-color: $primary;
+        }
+        .timeline-time {
+            position: relative;
+            width: 100%;
+            min-height: 4rem;
+            margin-bottom: 7px;
+            .timeline-header-section {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .avatar-group .avatar-sm {
+                margin-left: -0.8rem;
+            }
+            .avatar-sm .avatar-initial{
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+    .timeline-dot-primary {
+        background-color: $primary !important;
+        outline: 3px solid var(--#{$prefix}border-color);
+    }
+    .timeline-dot-info {
+        background-color: $info !important;
+        outline: 3px solid var(--#{$prefix}border-color);
+    }
+    .timeline-dot-purple {
+        background-color: $purple !important;
+        outline: 3px solid var(--#{$prefix}border-color);
+    }
+}

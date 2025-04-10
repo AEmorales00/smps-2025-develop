@@ -1,0 +1,210 @@
+<breadcrumb [title]="'Components'" [subtitle]="'Progress'" />
+
+<div class="row">
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Default Progress</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div>
+          <ngb-progressbar class="mb-3" type="primary" [value]="0" />
+          <ngb-progressbar class="mb-3" type="primary" [value]="25" />
+          <ngb-progressbar class="mb-3" type="primary" [value]="50" />
+          <ngb-progressbar class="mb-3" type="primary" [value]="75" />
+          <ngb-progressbar class="mb-3" type="primary" [value]="100" />
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <!-- Backgrounds Progress -->
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Backgrounds Progress</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div>
+          <ngb-progressbar class="mb-3" type="primary" [value]="25" />
+          <ngb-progressbar class="mb-3" type="secondary" [value]="50" />
+          <ngb-progressbar class="mb-3" type="success" [value]="75" />
+          <ngb-progressbar class="mb-3" type="danger" [value]="100" />
+          <ngb-progressbar class="mb-3" type="warning" [value]="85" />
+          <ngb-progressbar class="mb-3" type="info" [value]="65" />
+          <ngb-progressbar class="mb-3" type="dark" [value]="33" />
+        </div>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <!-- Multiple Progress Bars -->
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Striped</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <ngb-progressbar
+          class="mb-3"
+          [striped]="true"
+          type="primary"
+          [value]="10"
+        />
+        <ngb-progressbar
+          class="mb-3"
+          [striped]="true"
+          type="success"
+          [value]="25"
+        />
+        <ngb-progressbar
+          class="mb-3"
+          [striped]="true"
+          type="info"
+          [value]="50"
+        />
+        <ngb-progressbar
+          class="mb-3"
+          [striped]="true"
+          type="warning"
+          [value]="75"
+        />
+        <ngb-progressbar
+          class="mb-3"
+          [striped]="true"
+          type="danger"
+          [value]="100"
+        />
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <!-- Height Progress Bars -->
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Height</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <ngb-progressbar class="mb-3" type="danger" [value]="25" height="1px" />
+        <ngb-progressbar
+          class="mb-3"
+          type="primary"
+          [value]="25"
+          height="3px"
+        />
+        <ngb-progressbar
+          class="mb-3"
+          type="success"
+          [value]="25"
+          height="5px"
+        />
+        <ngb-progressbar class="mb-3" type="info" [value]="25" height="7px" />
+        <ngb-progressbar
+          class="mb-3"
+          type="warning"
+          [value]="50"
+          height="12px"
+        />
+        <ngb-progressbar class="mb-3" type="success" [value]="75" />
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <!-- Multiple Progress Bars -->
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Multiple Progress Bars</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <ngb-progressbar-stacked>
+          <ngb-progressbar
+            class="mt-0"
+            type="primary"
+            [value]="25"
+          ></ngb-progressbar>
+          <ngb-progressbar
+            class="mt-0"
+            type="success"
+            [value]="30"
+          ></ngb-progressbar>
+          <ngb-progressbar
+            class="mt-0"
+            type="info"
+            [value]="20"
+          ></ngb-progressbar>
+        </ngb-progressbar-stacked>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <!-- Width -->
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Width</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <ngb-progressbar
+          type="primary"
+          class="mt-0"
+          [value]="75"
+        ></ngb-progressbar>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+
+  <!-- Labels -->
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Progess With Labels</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <ngb-progressbar
+          type="primary"
+          class="mt-0"
+          [value]="25"
+          textType="white"
+          [showValue]="true"
+        ></ngb-progressbar>
+      </div>
+      <!-- end card-body -->
+    </div>
+    <!-- end card-->
+  </div>
+  <!-- end col -->
+</div>

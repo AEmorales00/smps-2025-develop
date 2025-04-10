@@ -1,0 +1,87 @@
+//
+//  Authentication
+//
+.account-images {
+    background-image: url(../../../images/person.jpg);
+}
+.account-page {
+    align-items: center;
+    display: flex;
+    min-height: 100vh;
+    .account-page-bg{
+        // background: linear-gradient(135deg, $primary 0, #06162E 100%);
+        background-image: url(../../../images/bannerumg.webp);
+        background-size: cover;
+        background-position: center center;
+        min-height: 890px;
+        display: flex;
+        justify-content: center;
+        .auth-image {
+            max-width: 800px;
+            margin: auto;
+        }
+    }
+}
+.auth-title-section {
+    h3 {
+        font-size: 25px;
+    }
+    p {
+        line-height: 1.6rem;
+    }
+}
+
+.header-box {
+    background-color: $primary;
+}
+.auth-button a{
+    color: $dark;
+    font-weight: 500;
+    border: 1px solid var(--bs-gray-400);
+}
+
+.saprator {
+    position: relative;
+    text-align: center;
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100px;
+        top: 50%;
+        height: 1px;
+        background: #e5eaef;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 100px;
+        top: 50%;
+        height: 1px;
+        background: #e5eaef;
+    }
+}
+
+.auth-user-review {
+    color: $white;
+    position: absolute;
+    margin: 0 auto;
+    padding: 0 1.75rem;
+    bottom: 3rem;
+    p.prelead {
+        font-size: 2rem;
+        margin: 0 auto 20px auto;
+        max-width: 700px;
+    }
+}
+
+
+.auth-brand {
+    span.logo-lg {
+        display: block;
+    }
+    .logo-light {
+        display: none;
+    }
+}

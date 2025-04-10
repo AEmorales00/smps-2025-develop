@@ -1,0 +1,49 @@
+//
+// Chart Js
+//
+
+.apexcharts-yaxis
+  .apexcharts-yaxis-texts-g
+  .apexcharts-text.apexcharts-yaxis-label {
+  font-weight: 500;
+}
+
+.apexcharts-title-text {
+  fill: var(--#{$prefix}heading-color) !important;
+}
+
+.apexcharts-legend-series .apexcharts-legend-text {
+  color: var(--#{$prefix}heading-color) !important;
+}
+
+.apexcharts-xaxis text,
+.apexcharts-yaxis text {
+  font-family: var(--#{$prefix}font-sans-serif) !important;
+  fill: var(--#{$prefix}heading-color) !important;
+  opacity: 0.8;
+}
+.apexcharts-grid,
+.apexcharts-gridline,
+.apexcharts-gridline line,
+.apexcharts-gridlines-horizontal,
+.apexcharts-gridlines-vertical,
+.apexcharts-xaxis line,
+.apexcharts-xaxis-tick {
+  pointer-events: none;
+  stroke: var(--#{$prefix}chart-border-color) !important;
+  // stroke: #f1f1f1 !important;
+}
+
+.apexcharts-datalabel-label,
+.apexcharts-datalabel-value {
+  fill: var(--#{$prefix}heading-color) !important;
+}
+
+.apexcharts-pie-area,
+.apexcharts-radar-series polygon {
+  stroke: var(--#{$prefix}chart-border-color) !important;
+}
+
+.apexcharts-radialbar-hollow {
+  fill: transparent;
+}

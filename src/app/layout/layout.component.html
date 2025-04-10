@@ -1,0 +1,26 @@
+<div id="app-layout">
+  <app-topbar />
+  <app-sidebar />
+
+  <div class="content-page">
+    <div class="content">
+      <!-- Start Content-->
+      <div class="container-fluid">
+        <router-outlet />
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col fs-13 text-muted text-center">
+          &copy;
+          {{ year }} - Made with
+          <span class="mdi mdi-heart text-danger"></span> by
+          <a href="#!" class="text-reset fw-semibold">{{ name }}</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,82 @@
+// 
+// Select Database.scss
+//
+
+.datatable-selector {
+    padding: 6px;
+    border-radius: 4px;
+    border-color: var(--#{$prefix}border-color) !important;
+    color: var(--#{$prefix}body-color) !important;
+    background-color: var(--#{$prefix}body-secondary-bg) !important;
+}
+
+.dataTable-top,.datatable-top {
+    padding-top: 0;
+}
+
+.datatable-top {
+    padding: 0px 0px 8px 0px !important;
+}
+
+.datatable-table>tbody>tr>td {
+    padding: .75rem .75rem;
+    vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.datatable-table>thead {
+    background-color: var(--#{$prefix}light) !important;
+}
+
+.datatable-table>thead>tr>th {
+    border-color: var(--#{$prefix}border-color) !important;
+}
+
+.datatable-wrapper.no-footer .datatable-container {
+    border-bottom: 1px solid var(--#{$prefix}border-color) !important;
+}
+
+
+.datatable-table>thead>tr>th {
+    font-weight: 500;
+}
+
+.datatable-bottom {
+    margin-top: 1.5rem;
+    padding: 0;
+}
+
+.datatable-pagination .datatable-active button {
+    color: #fff;
+    background-color: $primary !important;
+    border-color: $primary !important;
+}
+
+.datatable-pagination-list-item:first-child .datatable-pagination-list-item-link {
+    border-top-left-radius: 0.475rem;
+    border-bottom-left-radius: 0.475rem;
+}
+
+.datatable-pagination-list-item:last-child .datatable-pagination-list-item-link {
+    border-top-right-radius: 0.475rem;
+    border-bottom-right-radius: 0.475rem;
+}
+.datatable-pagination-list-item .datatable-pagination-list-item-link {
+    background-color: var(--#{$prefix}card-bg) !important;
+    border: 1px solid var(--#{$prefix}border-color) !important;
+}
+
+.datatable-info {
+    margin: 7px 0;
+}
+
+.datatable-selector {
+    margin-right: 6px;
+}
+
+.datatable-sorter::before {
+    bottom: 0px;
+}

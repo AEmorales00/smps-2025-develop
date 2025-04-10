@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex align-items-center">
+            <h5 class="card-title mb-0">Sales Pipeline</h5>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div id="top-session" class="apex-charts">
+            <apx-chart [series]="salespipe.series!" [labels]="salespipe.labels!" [dataLabels]="salespipe.dataLabels!"
+                [fill]="salespipe.fill!" [stroke]="salespipe.stroke!" [grid]="salespipe.grid!"
+                [chart]="salespipe.chart!" [colors]="salespipe.colors!" [plotOptions]="salespipe.plotOptions!"
+                [yaxis]="salespipe.yaxis!" [legend]="salespipe.legend!" />
+        </div>
+
+        <div class="row mt-2">
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center p-1">
+                    <div>
+                        <i class="mdi mdi-circle fs-12 align-middle me-1 text-success"></i>
+                        <span class="align-middle fw-semibold">Won</span>
+                    </div>
+                    <span class="fw-medium text-muted float-end"><i
+                            class="mdi mdi-arrow-up text-success align-middle fs-14 me-1"></i>12.48%</span>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center p-1">
+                    <div>
+                        <i class="mdi mdi-circle fs-12 align-middle me-1" style="color: #522c8f;"></i>
+                        <span class="align-middle fw-semibold">Discovery</span>
+                    </div>
+                    <span class="fw-medium text-muted float-end"><i
+                            class="mdi mdi-arrow-up text-success align-middle fs-14 me-1"></i>5.23%</span>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center p-1">
+                    <div>
+                        <i class="mdi mdi-circle fs-12 align-middle me-1 text-warning"></i>
+                        <span class="align-middle fw-semibold">Undiscovery</span>
+                    </div>
+                    <span class="fw-medium text-muted float-end"><i
+                            class="mdi mdi-arrow-up text-success align-middle fs-14 me-1"></i>15.58%</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

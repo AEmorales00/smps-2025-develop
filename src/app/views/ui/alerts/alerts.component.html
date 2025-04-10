@@ -1,0 +1,137 @@
+<breadcrumb [title]="'Components'" [subtitle]="'Alerts'" />
+
+<div class="row">
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Default Alerts</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        @for (item of alerts; track $index; let last = $last) {
+          <ngb-alert
+            [dismissible]="false"
+            [type]="item.variant"
+            class="d-flex align-items-center {{ last && 'mb-0' }} "
+            role="alert"
+            >A simple primary alert—check it out!</ngb-alert
+          >
+        }
+      </div>
+      <!-- end card body -->
+    </div>
+    <!-- end card -->
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Dismissing Alerts</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        @for (item of alerts; track $index; let last = $last) {
+          <ngb-alert
+            [dismissible]="true"
+            [type]="item.variant"
+            class="d-flex align-items-center {{ last && 'mb-0' }} "
+            role="alert"
+            >A simple primary alert—check it out!</ngb-alert
+          >
+        }
+      </div>
+      <!-- end card body -->
+    </div>
+    <!-- end card -->
+  </div>
+  <!-- end col -->
+</div>
+<!-- end row -->
+
+<!-- Start Alerts Link Color && Outline Alerts -->
+<div class="row">
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Alerts Link Color</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        @for (item of alerts; track $index; let last = $last) {
+          <ngb-alert [type]="item.variant" [dismissible]="false" role="alert">
+            A simple {{ item.variant }} alert with
+            <a href="javascript: void(0);" class="alert-link">an example link</a
+            >. Give it a click if you like.
+          </ngb-alert>
+        }
+      </div>
+      <!-- end card body -->
+    </div>
+    <!-- end card -->
+  </div>
+  <!-- end col -->
+
+  <div class="col-xl-6">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Outline Alerts</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        @for (item of alerts; track $index; let last = $last) {
+          <ngb-alert
+            [type]="item.variant"
+            [dismissible]="true"
+            role="alert"
+            class="alert-outline"
+          >
+            <i class="mdi {{ item.icon }} me-2"></i>
+            A simple primary alert—check it out!
+          </ngb-alert>
+        }
+      </div>
+      <!-- end card body -->
+    </div>
+    <!-- end card -->
+  </div>
+  <!-- end col -->
+</div>
+<!-- End Alerts Link Color && Outline Alerts -->
+
+<!-- Start Additional Content -->
+<div class="row">
+  <div class="col-xl-12 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title mb-0">Additional Content</h5>
+      </div>
+      <!-- end card header -->
+
+      <div class="card-body">
+        <div>
+          <div class="alert alert-primary mb-0" role="alert">
+            <h4 class="alert-heading">Well done!</h4>
+            <p>
+              Aww yeah, you successfully read this important alert message. This
+              example text is going to run a bit longer so that you can see how
+              spacing within an alert works with this kind of content.
+            </p>
+            <hr />
+            <p class="mb-0">
+              Whenever you need to, be sure to use margin utilities to keep
+              things nice and tidy.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- end card body -->
+    </div>
+    <!-- end card -->
+  </div>
+  <!-- end col -->
+</div>

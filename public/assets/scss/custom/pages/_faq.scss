@@ -1,0 +1,64 @@
+// 
+// FAQs
+// 
+
+.faq-icon-box {
+    align-items: center;
+    justify-content: center;
+    min-width: 35px;
+    height: 35px;
+    width: 35px;
+    border-radius: 5px;
+    float: left;
+    display: flex;
+    border: 1px solid $primary;
+}
+
+.f-question {
+    margin-top: 0;
+    margin-left: 60px;
+    font-weight: 600;
+    font-size: 16px;
+    color: $dark;
+}
+.f-answer {
+    margin-left: 60px;
+}
+.icon-md {
+    height: 16px;
+    min-width: 16px;
+}
+.accordion-item-faq {
+    background-color: var(--#{$prefix}light);
+    margin-bottom: 15px;
+    border-radius: 5px;
+    padding: 15px 18px;
+    display: block;
+    .accordion-button {
+        background-color: var(--#{$prefix}light);
+        padding: 0px;
+        font-size: 16px;
+        box-shadow: none;
+        color: $dark;
+    }
+    .accordion-body {
+        padding: 20px 0px;
+    }
+}
+.accordion-item-faq:not(:first-of-type) {
+    border: var(--#{$prefix}accordion-border-width) solid var(--#{$prefix}accordion-border-color);
+}
+
+.profile-container{
+    background-image: url(../../../images/small/bg-faqs.png);
+    border-radius: 5px;
+    // border-top-left-radius: 5px;
+    // border-top-right-radius: 5px;
+    .faq-profile {
+        .avatar-group{
+            .avatar-sm {
+                margin-left: -.8rem;
+            }
+        }
+    }
+}

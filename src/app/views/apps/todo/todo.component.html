@@ -1,0 +1,107 @@
+<breadcrumb [title]="'Apps'" [subtitle]="'Todo List'" />
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <div class="datatable-dropdown">
+            <label>
+              <select
+                class="datatable-selector"
+                name="per-page"
+                (change)="onRowsChange($event)"
+              >
+                <option value="5">5</option>
+                <option value="10" selected="">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+              </select>
+              entries per page
+            </label>
+          </div>
+          <table class="table datatable datatable-table" id="datatable_1">
+            <thead>
+              <tr>
+                <th sortable="task" (sort)="onSort($event)" class="ps-0">
+                  Customer
+                </th>
+                <th sortable="status" (sort)="onSort($event)">Status</th>
+                <th sortable="assigned_to" (sort)="onSort($event)">
+                  Assigned To
+                </th>
+                <th sortable="due_date" (sort)="onSort($event)">Deadline</th>
+                <th sortable="priority" (sort)="onSort($event)">Priority</th>
+                <th sortable="actions" (sort)="onSort($event)">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of todoData; track $index) {
+                <tr>
+                  <td class="ps-0">
+                    <img
+                      [src]="item.user_image"
+                      alt=""
+                      class="thumb-md me-2 rounded-circle avatar-border"
+                    />
+                    <p class="d-inline-block align-middle mb-0">
+                      <span class="font-13 fw-medium">{{ item.task }}</span>
+                    </p>
+                  </td>
+                  <td>
+                    <span class="badge" [ngClass]="{
+                      'bg-warning-subtle text-warning':
+                        item.status == 'In Progress',
+                      'bg-danger-subtle text-danger': item.status == 'Not Started',
+                      'bg-secondary-subtle text-secondary': item.status == 'Active',
+                      'bg-info-subtle text-info': item.status == 'Inactive',
+                      'bg-success-subtle text-success':
+                        item.status == 'Completed',
+                    }">{{
+                      item.status
+                    }}</span>
+                  </td>
+                  <td>
+                    <a
+                      href=""
+                      class="d-inline-block align-middle mb-0 text-body"
+                      >{{ item.assigned_to }}</a
+                    >
+                  </td>
+                  <td>{{ item.due_date }}</td>
+                  <td>{{ item.priority }}</td>
+                  <td class="text-end">
+                    <a
+                      href="javascript:void(0);"
+                      class="btn btn-sm bg-primary-subtle me-1"
+                      data-bs-toggle="tooltip"
+                      data-bs-original-title="Edit"
+                    >
+                      <i class="mdi mdi-pencil-outline fs-14 text-primary"></i>
+                    </a>
+                    <a
+                      href="javascript:void(0);"
+                      class="btn btn-sm bg-danger-subtle"
+                      data-bs-toggle="tooltip"
+                      data-bs-original-title="Delete"
+                    >
+                      <i class="mdi mdi-delete fs-14 text-danger"></i>
+                    </a>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+          <div class="d-flex mt-3">
+            <div>
+              Showing {{ filteredEntries }} of {{ totalEntries }} entries
+            </div>
+            <nav class="datatable-pagination">
+              <ul class="datatable-pagination-list"></ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

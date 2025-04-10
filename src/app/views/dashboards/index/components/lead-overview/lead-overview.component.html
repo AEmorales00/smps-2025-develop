@@ -1,0 +1,17 @@
+<div class="card overflow-hidden">
+    <div class="card-header">
+        <div class="d-flex align-items-center">
+            <h5 class="card-title mb-0">Leads Overview</h5>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div id="deals-statistics" class="apex-charts">
+            <apx-chart [series]="leadOverview.series!" [labels]="leadOverview.labels!" [dataLabels]="leadOverview.dataLabels!"
+                [fill]="leadOverview.fill!" [stroke]="leadOverview.stroke!" [grid]="leadOverview.grid!"
+                [chart]="leadOverview.chart!" [colors]="leadOverview.colors!" [plotOptions]="leadOverview.plotOptions!"
+                [yaxis]="leadOverview.yaxis!" [legend]="leadOverview.legend!" />
+        </div>
+    </div>
+
+</div>
