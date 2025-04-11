@@ -9,7 +9,7 @@ import { inject } from '@angular/core'
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth/login',
+    redirectTo: 'auth/index',
     pathMatch: 'full',
   },
   {
@@ -37,4 +37,10 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./views/auth/auth.route').then((mod) => mod.AUTH_ROUTES),
   },
+  {
+    path: '**',
+    component: ErrorLayoutComponent,
+  }
+
+
 ]
