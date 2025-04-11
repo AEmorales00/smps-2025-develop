@@ -28,10 +28,16 @@ export class AuthenticationEffects {
         return this.authService.login(email, password).pipe(
           map((user) => {
             if (user) {
-              const returnUrl =
-                this.route.snapshot.queryParams['returnUrl'] || '/'
+              let returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
+
+              // 🔒 Prevención de bucle infinito
+              if (returnUrl === '/' || returnUrl.startsWith('/auth/login')) {
+                returnUrl = '/dashboard' // o cualquier ruta segura post-login
+              }
+
               this.router.navigateByUrl(returnUrl)
             }
+
             return loginSuccess({ user })
           }),
           catchError((error) => of(loginFailure({ error })))
