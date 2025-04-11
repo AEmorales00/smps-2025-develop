@@ -9,7 +9,7 @@ import { inject } from '@angular/core'
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'index',
+    redirectTo: 'auth/login',
     pathMatch: 'full',
   },
   {
