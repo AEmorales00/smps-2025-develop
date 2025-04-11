@@ -19,7 +19,7 @@ export class AuthenticationEffects {
     private authService: AuthenticationService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   login$ = createEffect(() =>
     this.actions$.pipe(
@@ -28,10 +28,17 @@ export class AuthenticationEffects {
         return this.authService.login(email, password).pipe(
           map((user) => {
             if (user) {
-              const returnUrl =
-                this.route.snapshot.queryParams['returnUrl'] || '/'
+              // Obtener el returnUrl de los query params
+              let returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
+
+              // Evitar redirigir de nuevo al login (para prevenir loops)
+              if (returnUrl.startsWith('/auth/login')) {
+                returnUrl = '/'
+              }
+
               this.router.navigateByUrl(returnUrl)
             }
+
             return loginSuccess({ user })
           }),
           catchError((error) => of(loginFailure({ error })))
