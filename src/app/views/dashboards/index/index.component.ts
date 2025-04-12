@@ -20,6 +20,7 @@ export class IndexComponent {
   esperados:number = 300
   registrados:number = 0
   faltantes:number = 0
+  totalIngresos: number = 0
 
   constructor(private indexservise: IndexService){
 
@@ -36,6 +37,7 @@ export class IndexComponent {
       this.asistentesList= response
       this.registrados = response.length
       this.faltantes= this.esperados-this.registrados
+      this.totalIngresos= 350*response.length
     })
   }
 }

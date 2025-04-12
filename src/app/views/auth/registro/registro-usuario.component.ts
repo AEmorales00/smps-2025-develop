@@ -82,7 +82,10 @@ export class RegistroUsuariosComponent implements OnInit {
       const formData = dto.toFormData();
 
       this.registroAsistentesService.postUsuarioAsistente(formData)
-        .then(res => console.log('Enviado', res))
+        .then(res =>{
+          this.registroForm.reset()
+          console.log('Enviado', res)
+        })
         .catch(err => console.error(err));
     }
   }

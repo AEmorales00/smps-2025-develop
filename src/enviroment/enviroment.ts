@@ -1,4 +1,4 @@
 export const enviroment = {
-  apiUrl: 'http://localhost:3000'
+  apiUrl: 'https://simposioumg-master.onrender.com'
 
 }
