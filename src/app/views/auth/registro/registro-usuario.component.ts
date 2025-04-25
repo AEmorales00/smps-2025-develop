@@ -49,32 +49,6 @@ export class RegistroUsuariosComponent implements OnInit {
     }
   }
 
-
-  // onSubmit(): void {
-  //   if (this.registroForm.valid) {
-  //     const formData = new FormData(this.registroForm.value);
-
-  //     // Agregar el archivo si existe
-  //     const file = this.registroForm.get('comprobante')?.value;
-  //     if (file) {
-  //       formData.append('comprobante', file, file.name);
-  //     }
-
-  //     console.log(formData)
-
-  //     this.registroAsistentesService.postUsuarioAsistente(this.registroForm.value).then(
-  //       response => {
-  //         console.log('Respuesta del servidor:', response);
-  //       },
-  //       error => {
-  //         console.error('Error al enviar:', error);
-  //       }
-  //     );
-  //   } else {
-  //     console.log('Formulario no válido');
-  //   }
-  // }
-
   onSubmit(): void {
     if (this.registroForm.valid) {
       const formModel: FormModel = this.registroForm.value;

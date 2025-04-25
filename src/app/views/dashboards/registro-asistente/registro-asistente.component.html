@@ -1,0 +1,129 @@
+<breadcrumb [title]="'Registro Simposio 2025'" />
+<hr>
+<div class="row">
+  <div class="col">
+    <div class="card col-12 m-auto d-flex align-items-center h-75">
+      <div class="card-body col-10 my-auto">
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+          <div class="row gap-2 mb-2">
+            <div class="col">
+              <label for="nombres" class="form-label">Nombres</label>
+              <input
+                type="text"
+                id="nombres"
+                class="form-control"
+                formControlName="nombres"
+              />
+              <div *ngIf="registroForm.get('nombres')?.invalid && registroForm.get('nombres')?.touched" class="text-danger">
+                Nombre es requerido y debe tener al menos 2 caracteres.
+              </div>
+            </div>
+
+            <div class="col">
+              <label for="apellidos" class="form-label">Apellidos</label>
+              <input
+                type="text"
+                id="apellidos"
+                class="form-control"
+                formControlName="apellidos"
+              />
+              <div *ngIf="registroForm.get('apellidos')?.invalid && registroForm.get('apellidos')?.touched" class="text-danger">
+                Apellidos son requeridos y deben tener al menos 2 caracteres.
+              </div>
+            </div>
+          </div>
+
+         <div class="row gap-2 mb-2">
+          <div class="col">
+            <label for="telefono" class="form-label">Telefono</label>
+            <input
+              type="tel"
+              id="telefono"
+              class="form-control"
+              formControlName="telefono"
+            />
+          </div>
+
+          <div class="col">
+            <label for="email" class="form-label">Correo Electrónico</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              formControlName="email"
+            />
+            <div *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched" class="text-danger">
+              Correo electrónico es inválido.
+            </div>
+          </div>
+
+         </div>
+
+          <div class="row gap-2 mb-2">
+            <div class="col">
+              <label for="talla" class="form-label">Talla</label>
+              <select class="form-select" id="talla" formControlName="talla">
+                <option [value]="talla.talla" *ngFor="let talla of tallas">{{ talla.talla }}</option>
+              </select>
+            </div>
+
+            <div class="col">
+              <label for="example-date" class="form-label">Fecha</label>
+              <input
+                type="date"
+                id="example-date"
+                class="form-control"
+                formControlName="birth_date"
+              />
+            </div>
+          </div>
+
+          <div class="row gap-2 mb-2">
+            <div class="col">
+              <label for="rolId" class="form-label">Rol</label>
+              <select class="form-select" id="rolId" formControlName="rolId">
+                <option [value]="rol.descripcion" *ngFor="let rol of rolUsuario">{{ rol.descripcion }}</option>
+              </select>
+            </div>
+
+            <div class="col" *ngIf="registroForm.get('rolId')?.value === participant_type_student">
+              <label for="carnet" class="form-label">Carnet</label>
+              <input
+                type="number"
+                id="carnet"
+                class="form-control"
+                formControlName="carnet"
+              />
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <label for="formFile" class="form-label">Comprobante de pago</label>
+            <input
+              class="form-control"
+              type="file"
+              id="formFile"
+              accept="image/jpeg, image/png"
+              (change)="onFileSelected($event)"
+            />
+            <div *ngIf="registroForm.get('comprobante')?.invalid && registroForm.get('comprobante')?.touched" class="text-danger">
+              El archivo es requerido.
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary" [disabled]="registroForm.invalid">Registrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col ">
+      <img
+        src="assets/images/logoMulticolorh.png"
+        alt=""
+        class="img-thumbnail h-75 rounded-4 avatar"
+      />
+  </div>
+</div>
