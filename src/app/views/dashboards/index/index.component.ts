@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router'; // ✅ Ya agregado
 })
 export class IndexComponent {
   todoData: any;
+  totalIngresos: number = 0;
   asistentesList: AsistentesInterface[] = [];
   esperados: number = 300;
   registrados: number = 0;
