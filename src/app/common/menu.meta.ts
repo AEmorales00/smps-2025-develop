@@ -31,6 +31,12 @@ export const MENU_ITEMS: MenuItemType[] = [
         label: 'Home',
         url: '/index',
         parentKey: 'dashboard',
+      },
+      {
+        key: 'dashboard-registro',
+        label: 'Registro Simposio',
+        url: '/registro-simposio',
+        parentKey: 'dashboard',
       }
     ],
   },
