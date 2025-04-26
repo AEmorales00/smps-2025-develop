@@ -60,34 +60,19 @@ export class IndexComponent {
   confirmarParticipante(participantId: number) {
     if (!confirm('¿Estás seguro de confirmar este participante?')) return;
   
-    this.indexService.confirmarPago(participantId)
+    const comment = prompt('¿Deseas agregar un comentario para este participante?') || '';
+  
+    this.indexService.confirmarPago(participantId, comment)
       .then(() => {
         alert('✅ Participante confirmado exitosamente.');
-  
-        // 🔥 Llamar descarga y procesar el archivo
-        this.indexService.downloadCertificado(participantId)
-          .then((response) => {
-            const blob = new Blob([response], { type: 'application/pdf' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `certificado_${participantId}.pdf`;
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            window.URL.revokeObjectURL(url);
-          })
-          .catch(error => {
-            console.error('Error al descargar certificado:', error);
-            alert('⚠️ Error al descargar el certificado.');
-          });
-  
-        this.getAsistentes(); // refrescar tabla
+        this.indexService.downloadCertificado(participantId); // descarga automático
+        this.getAsistentes(); // refrescar lista
       })
       .catch((error) => {
         console.error('Error al confirmar participante:', error);
         alert('❌ Ocurrió un error al confirmar el participante.');
       });
   }
+  
   
 }

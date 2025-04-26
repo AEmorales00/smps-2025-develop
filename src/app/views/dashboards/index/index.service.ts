@@ -19,16 +19,17 @@ export class IndexService {
     });
   }
 
-  confirmarPago(participantId: number): Promise<any> {
-    const url = `verify/${participantId}`; // ✅ ahora sí correcto
+  confirmarPago(participantId: number, comment: string): Promise<any> {
+    const url = `verify/${participantId}`;
     return new Promise((resolve, reject) => {
-      this.apiservice.putMethod(url, {}, {}, 'No se pudo confirmar al participante.')
+      this.apiservice.putMethod(url, { comment }, {}, 'No se pudo confirmar participante.')
         .subscribe({
           next: (response: any) => resolve(response),
           error: (err: any) => reject(err)
         });
     });
   }
+  
 
   downloadCertificado(participantId: number): Promise<any> {
     const url = `cert/${participantId}/pdf`;
