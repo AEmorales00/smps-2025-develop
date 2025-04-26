@@ -23,6 +23,7 @@ export class IndexComponent {
   esperados: number = 300;
   registrados: number = 0;
   faltantes: number = 0;
+  comment: string = '';
 
   constructor(private indexService: IndexService) {}
 
@@ -46,7 +47,7 @@ export class IndexComponent {
   confirmarPago(participantId: number) {
     if (!confirm('¿Seguro que deseas confirmar este participante?')) return;
   
-    this.indexService.confirmarPago(participantId)
+    this.indexService.confirmarPago(participantId,this.comment)
       .then(() => {
         alert('¡Participante confirmado exitosamente! ✅');
         this.indexService.downloadCertificado(participantId); // ⬅️ Aquí se dispara la descarga
@@ -73,6 +74,7 @@ export class IndexComponent {
         alert('❌ Ocurrió un error al confirmar el participante.');
       });
   }
+  
   
   
 }
