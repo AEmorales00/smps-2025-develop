@@ -102,12 +102,12 @@
 
           <div class="mb-2">
             <label for="rolId" class="form-label">Rol</label>
-            <select class="form-select" id="rolId" formControlName="rolId">
+            <select class="form-select" id="participant_type" formControlName="participant_type">
               <option [value]="rol.descripcion" *ngFor="let rol of rolUsuario">{{ rol.descripcion }}</option>
-            </select>
+            </select>            
           </div>
 
-          <div class="mb-2" *ngIf="registroForm.get('rolId')?.value === participant_type_student">
+          <div class="mb-2" *ngIf="registroForm.get('participant_type')?.value === participant_type_student">
             <label for="carnet" class="form-label">Carnet</label>
             <input
               type="number"
