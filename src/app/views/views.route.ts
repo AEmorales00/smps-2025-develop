@@ -1,5 +1,6 @@
 import type { Route } from '@angular/router'
 import { IndexComponent } from './dashboards/index/index.component'
+import { RegistroAsistenComponent } from './dashboards/registro-asistente/registro-asistente.component'
 // import { DashboardComponent } from './dashboard/dashboard.component'
 
 export const VIEWS_ROUTES: Route[] = [
@@ -18,6 +19,11 @@ export const VIEWS_ROUTES: Route[] = [
     path: 'index',
     component: IndexComponent,
     data: { title: 'Index' },
+  },
+  {
+    path: 'registro-simposio',
+    component: RegistroAsistenComponent,
+    data: { title: 'registro' },
   },
 
 ]
