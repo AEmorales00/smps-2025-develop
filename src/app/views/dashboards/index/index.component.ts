@@ -46,12 +46,14 @@ export class IndexComponent {
 
   confirmarPago(participantId: number) {
     if (!confirm('¿Seguro que deseas confirmar este participante?')) return;
+    
+    const comment = prompt('¿Deseas agregar un comentario para este participante?') || '';
   
-    this.indexService.confirmarPago(participantId,this.comment)
+    this.indexService.confirmarPago(participantId, comment)
       .then(() => {
         alert('¡Participante confirmado exitosamente! ✅');
-        this.indexService.downloadCertificado(participantId); // ⬅️ Aquí se dispara la descarga
-        this.getAsistentes(); // Refrescar la tabla
+        this.indexService.downloadCertificado(participantId);
+        this.getAsistentes();
       })
       .catch((error) => {
         console.error(error);
@@ -60,21 +62,20 @@ export class IndexComponent {
   }
   confirmarParticipante(participantId: number) {
     if (!confirm('¿Estás seguro de confirmar este participante?')) return;
-  
+    
     const comment = prompt('¿Deseas agregar un comentario para este participante?') || '';
   
     this.indexService.confirmarPago(participantId, comment)
       .then(() => {
         alert('✅ Participante confirmado exitosamente.');
-        this.indexService.downloadCertificado(participantId); // descarga automático
-        this.getAsistentes(); // refrescar lista
+        this.indexService.downloadCertificado(participantId);
+        this.getAsistentes();
       })
       .catch((error) => {
         console.error('Error al confirmar participante:', error);
         alert('❌ Ocurrió un error al confirmar el participante.');
       });
   }
-  
   
   
 }

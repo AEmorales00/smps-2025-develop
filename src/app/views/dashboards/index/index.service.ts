@@ -31,15 +31,24 @@ export class IndexService {
   }
   
 
-  downloadCertificado(participantId: number): Promise<any> {
+  downloadCertificado(participantId: number): Promise<void> {
     const url = `cert/${participantId}/pdf`;
     return new Promise((resolve, reject) => {
       this.apiservice.GetMethodBlob(url, 'No se pudo descargar el certificado.')
         .subscribe({
-          next: (response: any) => resolve(response),
+          next: (blob: Blob) => {
+            const link = document.createElement('a');
+            const objectUrl = URL.createObjectURL(blob);
+            link.href = objectUrl;
+            link.download = `certificado-participante-${participantId}.pdf`;
+            link.click();
+            URL.revokeObjectURL(objectUrl);
+            resolve();
+          },
           error: (err: any) => reject(err)
         });
     });
   }
+  
   
 }
