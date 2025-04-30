@@ -2,7 +2,7 @@ export interface FormModel{
     nombres: string
     apellidos: string
     email: string
-    rolId: string
+    participant_type: string
     birth_date: string
     comprobante: File
     talla: string
@@ -28,7 +28,7 @@ export class datosUsuarioAsistenteDTO {
     this.phone = formModel.telefono;
     this.birth_date = formModel.birth_date;
     this.shirt_size = formModel.talla;
-    this.participant_type = formModel.rolId;
+    this.participant_type = formModel.participant_type;
     this.carnet = formModel.carnet;
     this.comprobante = formModel.comprobante;
     this.payment_method = formModel.metodo_pago;

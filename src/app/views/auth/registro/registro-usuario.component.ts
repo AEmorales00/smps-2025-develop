@@ -10,14 +10,16 @@ import { UtilsService } from '@core/services/utils.service';
 @Component({
   selector: 'registro-usuarios',
   templateUrl: 'registro-usuarios.component.html',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule, NgbCarouselModule],
 })
 export class RegistroUsuariosComponent implements OnInit {
   rolUsuario: RolUsuarioInterface[] = rolesList;
+  tallas: Tallas[] = tallasList;
+  participant_type_student = rolesList[0].descripcion;
+  selectedFile: File | null = null;
   registroForm: FormGroup;
-  selectedFile: File | null = null;  // Almacena el archivo seleccionado
-  tallas: Tallas[] = tallasList
-  participant_type_student= rolesList[0].descripcion
+
   private modalService = inject(NgbModal)
   @ViewChild('standardModal') standardModal: any;
   isLoading = false;
@@ -32,10 +34,10 @@ export class RegistroUsuariosComponent implements OnInit {
       nombres: ['', [Validators.required, Validators.minLength(2)]],
       apellidos: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
-      rolId: ['', Validators.required],
+      participant_type: ['', Validators.required], // nombre correcto
       birth_date: ['', Validators.required],
-      comprobante: [null, Validators.required],  // Campo para archivo
-      talla: ['', Validators.required ],
+      comprobante: [null, Validators.required],
+      talla: ['', Validators.required],
       telefono: ['', Validators.required],
       carnet: ['']
     });
@@ -47,14 +49,8 @@ export class RegistroUsuariosComponent implements OnInit {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       this.selectedFile = file;
-      this.registroForm.patchValue({
-        comprobante: file
-      });
-
-      // Asegurar que el formulario detecte el cambio
+      this.registroForm.patchValue({ comprobante: file });
       this.registroForm.get('comprobante')?.updateValueAndValidity();
-
-      console.log('Archivo seleccionado:', file);
     }
   }
 
@@ -72,8 +68,12 @@ export class RegistroUsuariosComponent implements OnInit {
           this.modalService.open(this.standardModal);
           this.isLoading = false;
         })
-        .catch(err => console.error(err));
+        .catch(err => {
+          const errorMessage = err.error?.error || 'Error inesperado al registrar.';
+          alert(`❌ ${errorMessage}`);
+        });
+    } else {
+      alert('❌ Por favor llena todos los campos correctamente antes de enviar.');
     }
   }
-
 }
