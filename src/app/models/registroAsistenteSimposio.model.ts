@@ -1,13 +1,14 @@
-export interface FormModel {
-  nombres: string
-  apellidos: string
-  email: string
-  participant_type: string  // 🔥 Correcto ahora
-  birth_date: string
-  comprobante: File
-  talla: string
-  telefono: string
-  carnet: number
+export interface FormModel{
+    nombres: string
+    apellidos: string
+    email: string
+    participant_type: string
+    birth_date: string
+    comprobante: File
+    talla: string
+    telefono:string
+    carnet:number
+    metodo_pago?: string
 }
 
 export class datosUsuarioAsistenteDTO {
@@ -19,6 +20,7 @@ export class datosUsuarioAsistenteDTO {
   participant_type: string = '';
   carnet: number = 0;
   comprobante: File | null = null;
+  payment_method?: string = '';
 
   constructor(formModel: FormModel) {
     this.name = `${formModel.nombres} ${formModel.apellidos}`;
@@ -29,6 +31,7 @@ export class datosUsuarioAsistenteDTO {
     this.participant_type = formModel.participant_type;
     this.carnet = formModel.carnet;
     this.comprobante = formModel.comprobante;
+    this.payment_method = formModel.metodo_pago;
   }
 
   toFormData(): FormData {
@@ -40,6 +43,7 @@ export class datosUsuarioAsistenteDTO {
     formData.append('shirt_size', this.shirt_size);
     formData.append('participant_type', this.participant_type);
     formData.append('carnet', this.carnet.toString());
+    formData.append('payment_method', this.payment_method || '');
 
     if (this.comprobante) {
       formData.append('comprobante', this.comprobante, this.comprobante.name);

@@ -39,16 +39,14 @@ export class IndexComponent {
         this.faltantes = this.esperados - this.registrados;
       })
       .catch(error => {
-        console.error('Error al obtener asistentes:', error);
-        alert('❌ No se pudieron cargar los asistentes.');
       });
   }
 
   confirmarPago(participantId: number) {
     if (!confirm('¿Seguro que deseas confirmar este participante?')) return;
-    
+
     const comment = prompt('¿Deseas agregar un comentario para este participante?') || '';
-  
+
     this.indexService.confirmarPago(participantId, comment)
       .then(() => {
         alert('¡Participante confirmado exitosamente! ✅');
@@ -62,9 +60,9 @@ export class IndexComponent {
   }
   confirmarParticipante(participantId: number) {
     if (!confirm('¿Estás seguro de confirmar este participante?')) return;
-    
+
     const comment = prompt('¿Deseas agregar un comentario para este participante?') || '';
-  
+
     this.indexService.confirmarPago(participantId, comment)
       .then(() => {
         alert('✅ Participante confirmado exitosamente.');
@@ -76,6 +74,6 @@ export class IndexComponent {
         alert('❌ Ocurrió un error al confirmar el participante.');
       });
   }
-  
-  
+
+
 }

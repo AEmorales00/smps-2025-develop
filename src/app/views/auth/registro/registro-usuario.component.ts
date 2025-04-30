@@ -1,12 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { Component, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { rolesList, RolUsuarioInterface, tallasList, Tallas } from './datos-seleccionable';
-import { RegistroAsistentesService } from './registro.service';
+import { CommonModule } from '@angular/common';
 import { datosUsuarioAsistenteDTO, FormModel } from '@/app/models/registroAsistenteSimposio.model';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RegistroAsistentesService } from './registro.service';
+import { NgbCarouselModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UtilsService } from '@core/services/utils.service';
 
 @Component({
   selector: 'registro-usuarios',
@@ -21,10 +20,15 @@ export class RegistroUsuariosComponent implements OnInit {
   selectedFile: File | null = null;
   registroForm: FormGroup;
 
+  private modalService = inject(NgbModal)
+  @ViewChild('standardModal') standardModal: any;
+  isLoading = false;
+
   constructor(
     private fb: FormBuilder,
     private registroAsistentesService: RegistroAsistentesService,
-    private router: Router
+    private utilsService:UtilsService,
+
   ) {
     this.registroForm = this.fb.group({
       nombres: ['', [Validators.required, Validators.minLength(2)]],
@@ -52,15 +56,17 @@ export class RegistroUsuariosComponent implements OnInit {
 
   onSubmit(): void {
     if (this.registroForm.valid) {
+      this.isLoading = true; // Mostrar loading
+
       const formModel: FormModel = this.registroForm.value;
       const dto = new datosUsuarioAsistenteDTO(formModel);
       const formData = dto.toFormData();
 
       this.registroAsistentesService.postUsuarioAsistente(formData)
-        .then(() => {
-          alert('✅ ¡Registro exitoso!');
+        .then(res =>{
           this.registroForm.reset();
-          this.router.navigate(['/index']); // 🔄 redirige al dashboard
+          this.modalService.open(this.standardModal);
+          this.isLoading = false;
         })
         .catch(err => {
           const errorMessage = err.error?.error || 'Error inesperado al registrar.';
