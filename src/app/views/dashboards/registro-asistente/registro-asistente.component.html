@@ -2,7 +2,7 @@
 <hr>
 <div class="row">
   <div class="col">
-    <div class="card col-12 m-auto d-flex align-items-center h-75">
+    <div class="card col-12 m-auto d-flex align-items-center h-auto py-5">
       <div class="card-body col-10 my-auto">
         <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
           <div class="row gap-2 mb-2">
@@ -98,6 +98,16 @@
             </div>
           </div>
 
+          <div class="col">
+            <label for="metodo_pago" class="form-label">Método de Pago</label>
+            <input
+              type="text"
+              id="metodo_pago"
+              class="form-control"
+              formControlName="metodo_pago"
+            />
+          </div>
+
           <div class="mb-2">
             <label for="formFile" class="form-label">Comprobante de pago</label>
             <input
@@ -112,18 +122,58 @@
             </div>
           </div>
 
-          <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary" [disabled]="registroForm.invalid">Registrar</button>
-          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="registroForm.invalid || isLoading">
+            <ng-container *ngIf="isLoading; else noLoading">
+              <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+              <span role="status">Guardando...</span>
+            </ng-container>
+            <ng-template #noLoading>Registrar</ng-template>
+          </button>
         </form>
       </div>
     </div>
   </div>
-  <div class="col ">
-      <img
-        src="assets/images/logoMulticolorh.png"
-        alt=""
-        class="img-thumbnail h-75 rounded-4 avatar"
-      />
+
+  <div class="card-body">
+    <!-- Default Modal -->
+    <ng-template
+      #standardModal
+      let-modal
+      class="modal fade"
+      id="standard-modal"
+      tabindex="-1"
+      aria-labelledby="standard-modalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="standard-modalLabel">
+          Registro Exitoso
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="modal.close('Save click')"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+
+        <p class="mb-0">
+          Se ha registrado exitosamente al SIMPOSIO INNOVA 2025.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-light"
+          data-bs-dismiss="modal"
+          (click)="modal.close('Save click')"
+        >
+          Cerrar
+        </button>
+      </div>
+    </ng-template>
+
   </div>
 </div>

@@ -1,19 +1,39 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ApiService } from '@core/services/api.service';
+import { CONSTANTS } from '@views/auth/constants';
+import { LoginService } from '@views/auth/sign-in/sign-in.service';
 
 @Injectable({providedIn: 'root'})
 export class registroAsistenteService {
-  constructor(private api:ApiService) { }
+  token: string = '';
 
-  postUsuarioAsistente(body: any){
-    const url = `inscripcion/registrar-admin`
-    return new Promise((resolve, reject)=>{
-        this.api.PostMethod(url, body, {}, 'No se ha podido realializar el registro, intente mas tarde.')
-        .subscribe(response=>{
-            resolve(response)
-        },error=>{
-            reject(error)
+
+    constructor(
+      private api:ApiService,
+      private httpClient: HttpClient,
+      private loginService: LoginService
+    ) {
+    }
+
+      postUsuarioAsistente(body: any){
+        this.token = this.loginService.accessToken
+        console.log('token', this.token)
+        const urlBase= this.api.baseUrl
+        const url = `${urlBase}admin/register`
+
+        const headers = new HttpHeaders({
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.token}`
+        });
+
+        return new Promise((resolve, reject)=>{
+            this.httpClient.post(url, body,{ headers })
+            .subscribe(response=>{
+                resolve(response)
+            },error=>{
+                reject(error)
+            })
         })
-    })
 }
 }

@@ -1,10 +1,12 @@
 import { datosUsuarioAsistenteDTO, FormModel } from '@/app/models/registroAsistenteSimposio.model';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BreadcrumbComponent } from '@components/breadcrumb/breadcrumb.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { rolesList, RolUsuarioInterface, Tallas, tallasList } from '@views/auth/registro/datos-seleccionable';
 import { RegistroAsistentesService } from '@views/auth/registro/registro.service';
+import { registroAsistenteService } from './resgistro-asistente.service';
 
 @Component({
   selector: 'registro-asistente',
@@ -20,7 +22,11 @@ export class RegistroAsistenComponent implements OnInit {
   tallas: Tallas[] = tallasList
   participant_type_student= rolesList[0].descripcion
 
-  constructor(private fb: FormBuilder, private registroAsistentesService: RegistroAsistentesService) {
+  private modalService = inject(NgbModal)
+  @ViewChild('standardModal') standardModal: any;
+  isLoading = false;
+
+  constructor(private fb: FormBuilder, private registroAsistentesService: registroAsistenteService) {
     this.registroForm = this.fb.group({
       nombres: ['', [Validators.required, Validators.minLength(2)]],
       apellidos: ['', [Validators.required, Validators.minLength(2)]],
@@ -30,7 +36,8 @@ export class RegistroAsistenComponent implements OnInit {
       comprobante: [null, Validators.required],  // Campo para archivo
       talla: ['', Validators.required ],
       telefono: ['', Validators.required],
-      carnet: ['']
+      carnet: [''],
+      metodo_pago: ['',Validators.required]
     });
   }
 
@@ -55,16 +62,19 @@ export class RegistroAsistenComponent implements OnInit {
 
     onSubmit(): void {
       if (this.registroForm.valid) {
+        this.isLoading = true;
         const formModel: FormModel = this.registroForm.value;
         const dto = new datosUsuarioAsistenteDTO(formModel);
         const formData = dto.toFormData();
 
         this.registroAsistentesService.postUsuarioAsistente(formData)
           .then(res =>{
-            this.registroForm.reset()
-            console.log('Enviado', res)
-          })
-          .catch(err => console.error(err));
+            this.registroForm.reset();
+            this.modalService.open(this.standardModal);
+            this.isLoading = false;
+          },error=>{
+            this.isLoading = false;
+        })
       }
     }
 }

@@ -32,8 +32,8 @@
                   </div>
     </div>
 
-  <div class="col-6 h-100 over-flow-y-hidden">
-    <div class="card col-10 mx-auto d-flex justify-content-center align-items-center">
+  <div class="col-12 md:col-6 h-100 over-flow-y-hidden">
+    <div class="card col-12 md:col-10 mx-auto d-flex justify-content-center align-items-center">
       <div class="col-lg-2 my-2">
         <div>
           <img
@@ -42,6 +42,9 @@
             class="img-fluid rounded-circle avatar"
           />
         </div>
+      </div>
+      <div class="spinner-border m-2" role="status">
+        <span class="visually-hidden">Loading...</span>
       </div>
 
       <div class="card-header">
@@ -152,10 +155,59 @@
           </div>
 
           <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary" [disabled]="registroForm.invalid">Registrar</button>
+            <button type="submit" class="btn btn-primary" [disabled]="registroForm.invalid || isLoading">
+              <ng-container *ngIf="isLoading; else noLoading">
+                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                <span role="status">Loading...</span>
+              </ng-container>
+              <ng-template #noLoading>Registrar</ng-template>
+            </button>
           </div>
+
         </form>
       </div>
     </div>
+  </div>
+
+  <div class="card-body">
+    <!-- Default Modal -->
+    <ng-template
+      #standardModal
+      let-modal
+      class="modal fade"
+      id="standard-modal"
+      tabindex="-1"
+      aria-labelledby="standard-modalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="standard-modalLabel">
+          Registro Exitoso
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="modal.close('Save click')"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+
+        <p class="mb-0">
+          Se ha registrado exitosamente al SIMPOSIO INNOVA 2025.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-light"
+          data-bs-dismiss="modal"
+          (click)="modal.close('Save click')"
+        >
+          Cerrar
+        </button>
+      </div>
+    </ng-template>
   </div>
 </div>
