@@ -28,6 +28,13 @@ export class datosUsuarioAsistenteDTO {
     this.phone = formModel.telefono;
     this.birth_date = formModel.birth_date;
     this.shirt_size = formModel.talla;
+
+    // Validar participant_type
+    const validParticipantTypes = ['estudiante_umg', 'catedratico_umg', 'externo'];
+    if (!validParticipantTypes.includes(formModel.participant_type)) {
+      throw new Error('Tipo de participante inválido');
+    }
+
     this.participant_type = formModel.participant_type;
     this.carnet = formModel.carnet;
     this.comprobante = formModel.comprobante;
