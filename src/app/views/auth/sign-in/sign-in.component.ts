@@ -25,6 +25,7 @@ export class SignInComponent {
   currentYear = currentYear
   signInForm!: UntypedFormGroup
   submitted: boolean = false
+  isLoading:boolean = false
 
   errorMessage: string = ''
 
@@ -53,9 +54,11 @@ export class SignInComponent {
       const username = this.formValues['email'].value // Get the username from the form
       const password = this.formValues['password'].value // Get the password from the form
        const login = {username, password}
+       this.isLoading = true
       // Login Api
       this.service.postLogin(login)
         .then(response =>{
+          this.isLoading = false
           this.route.navigate(['index'])
         })
       //this.store.dispatch(login({ email: email, password: password }))

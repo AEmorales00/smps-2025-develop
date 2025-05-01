@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
 
-  <div class="col-xl-7 d-none d-xl-inline-block">
+  <div class="col-xl-7 d-none d-md-inline-block">
     <div class="account-page-bg rounded-4">
                       <div class="auth-user-review text-center">
                           <ngb-carousel [showNavigationArrows]="false" [showNavigationIndicators]="false" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -30,10 +30,10 @@
                           </ngb-carousel>
                       </div>
                   </div>
-    </div>
+  </div>
 
-  <div class="col-12 md:col-6 h-100 over-flow-y-hidden">
-    <div class="card col-12 md:col-10 mx-auto d-flex justify-content-center align-items-center">
+  <div class="col-12 col-md-6 h-100 over-flow-y-hidden">
+    <div class="card col-10 col-md-12 mx-auto d-flex justify-content-center align-items-center">
       <div class="col-lg-2 my-2">
         <div>
           <img
@@ -42,9 +42,6 @@
             class="img-fluid rounded-circle avatar"
           />
         </div>
-      </div>
-      <div class="spinner-border m-2" role="status">
-        <span class="visually-hidden">Loading...</span>
       </div>
 
       <div class="card-header">
@@ -107,7 +104,7 @@
             <label for="rolId" class="form-label">Rol</label>
             <select class="form-select" id="participant_type" formControlName="participant_type">
               <option [value]="rol.descripcion" *ngFor="let rol of rolUsuario">{{ rol.descripcion }}</option>
-            </select>            
+            </select>
           </div>
 
           <div class="mb-2" *ngIf="registroForm.get('participant_type')?.value === participant_type_student">

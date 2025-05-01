@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-  <div class="d-flex flex-column my-auto justify-content-center align-items-center col-6 h-100 ">
+  <div class="d-flex flex-column my-auto justify-content-center align-items-center col-12 col-md-6 h-100 ">
     <div clas="mx-auto"><p class="fs-1 fw-bold mx-auto">INNOVA TEC</p></div>
     <div class="col-lg-2 my-2">
       <div>
@@ -10,7 +10,7 @@
         />
       </div>
     </div>
-    <div class="card p-3 mb-0 col-8 mx-auto">
+    <div class="card p-3 mb-0 col-12 col-md-8 mx-auto">
       <div class="card-body">
         <div class="mb-0 border-0 p-md-5 p-lg-0 p-4">
           <div class="card pt-0">
@@ -50,8 +50,12 @@
               <div class="form-group mb-0 row">
                 <div class="col-12">
                   <div class="d-grid">
-                    <button class="btn btn-primary" type="submit">
-                      Iniciar Sesión
+                    <button type="submit" class="btn btn-primary">
+                      <ng-container *ngIf="isLoading; else noLoading">
+                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                        <span role="status">Loading...</span>
+                      </ng-container>
+                      <ng-template #noLoading>Iniciar Sesión</ng-template>
                     </button>
                   </div>
                 </div>

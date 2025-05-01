@@ -6,46 +6,38 @@
   </button>
 </div>
 
-<div class="bg-light rounded p-3 mb-3 border w-50">
-  <div class="d-flex align-items-center cols-12">
+<div class="container bg-light rounded p-3 mb-3 border col-12">
+  <div class="row row-cols-2 row-cols-md-3 g-2 g-lg-3">
     <!-- 👇 Tus 3 tarjetas, SIN cambios -->
-    <div class="col-6 col-sm-4">
+    <div class="col">
       <div class="earnings-section">
         <div class="d-flex gap-2 align-items-center">
-          <div class="bg-success-subtle rounded-2 p-1 me-2 border border-dashed border-success">
-            <!-- SVG de Registrados -->
-          </div>
           <h6 class="mb-0 fw-normal fs-16">Registrados</h6>
         </div>
         <h4 class="my-2 text-dark">{{asistentesList.length}}</h4>
       </div>
     </div>
 
-    <div class="col-6 col-sm-4">
+    <div class="col">
       <div class="earnings-section">
         <div class="d-flex gap-2 align-items-center">
-          <div class="bg-success-subtle rounded-2 p-1 me-2 border border-dashed border-success">
-            <!-- SVG de Esperados -->
-          </div>
           <h6 class="mb-0 fw-normal fs-16">Esperados</h6>
         </div>
         <h4 class="my-2 text-dark">{{esperados}}</h4>
       </div>
     </div>
 
-    <div class="col-6 col-sm-4">
-      <div class="earnings-profit border-start border-dashed border-primary-subtle mt-md-0 mt-2">
+    <div class="col">
+      <div class="earnings-profit mt-md-0 mt-2">
         <div class="ms-md-3">
           <div class="d-flex gap-2 align-items-center">
-            <div class="bg-primary-subtle rounded-2 p-1 me-2 border border-dashed border-primary">
-              <!-- SVG de Faltantes -->
-            </div>
             <h6 class="mb-0 fw-normal fs-16">Total de ingresos</h6>
           </div>
           <h4 class="my-2 text-dark">Q {{totalIngresos}}</h4>
         </div>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -59,7 +51,7 @@
             <thead>
               <tr>
                 <th class="ps-0">Nombre</th>
-                <th>Rol usuario</th>
+                <th>Tipo de usuario</th>
                 <th>Correo</th>
                 <th>Carnet</th>
                 <th>Teléfono</th>
