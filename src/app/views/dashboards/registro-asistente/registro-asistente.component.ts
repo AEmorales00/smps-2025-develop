@@ -37,7 +37,8 @@ export class RegistroAsistenComponent implements OnInit {
       talla: ['', Validators.required ],
       telefono: ['', Validators.required],
       carnet: [''],
-      metodo_pago: ['',Validators.required]
+      metodo_pago: ['', Validators.required],
+      participant_type: ['estudiante_umg', Validators.required] // Valor predeterminado válido
     });
   }
 
