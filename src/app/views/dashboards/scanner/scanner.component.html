@@ -1,0 +1,9 @@
+<zxing-scanner
+  *ngIf="selectedDevice"
+  [device]="selectedDevice"
+  (scanSuccess)="onCodeResult($event)">
+</zxing-scanner>
+
+
+<div>Resultado: {{result}}
+</div>

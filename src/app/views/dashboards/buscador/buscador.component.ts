@@ -32,7 +32,7 @@ export class BuscadorComponent implements OnInit {
 
 
 
-  ngOnInit() {console.log('BuscadorComponent initialized', this.listado$);}
+  ngOnInit() {}
 
 
   confirmarPago(participantId: number) {

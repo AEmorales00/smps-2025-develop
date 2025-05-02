@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { rolesList, RolUsuarioInterface, tallasList, Tallas } from './datos-seleccionable';
 import { CommonModule } from '@angular/common';
 import { datosUsuarioAsistenteDTO, FormModel } from '@/app/models/registroAsistenteSimposio.model';
@@ -22,7 +22,10 @@ export class RegistroUsuariosComponent implements OnInit {
 
   private modalService = inject(NgbModal)
   @ViewChild('standardModal') standardModal: any;
+  @ViewChild('fileInput') fileInput!: ElementRef;
+
   isLoading = false;
+  file:any
 
   constructor(
     private fb: FormBuilder,
@@ -46,10 +49,11 @@ export class RegistroUsuariosComponent implements OnInit {
   ngOnInit() {}
 
   onFileSelected(event: any): void {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      this.selectedFile = file;
-      this.registroForm.patchValue({ comprobante: file });
+    console.log(event)
+    this.file = (event.target as HTMLInputElement).files?.[0];
+    if (this.file) {
+      this.selectedFile = this.file;
+      this.registroForm.patchValue({ comprobante: this.file });
       this.registroForm.get('comprobante')?.updateValueAndValidity();
     }
   }
@@ -65,6 +69,10 @@ export class RegistroUsuariosComponent implements OnInit {
       this.registroAsistentesService.postUsuarioAsistente(formData)
         .then(res =>{
           this.registroForm.reset();
+          this.file = null;
+          this.selectedFile = null;
+          this.fileInput.nativeElement.value = '';
+
           this.modalService.open(this.standardModal);
           this.isLoading = false;
         })

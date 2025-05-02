@@ -37,6 +37,12 @@ export const MENU_ITEMS: MenuItemType[] = [
         label: 'Registro Simposio',
         url: '/registro-simposio',
         parentKey: 'dashboard',
+      },
+      {
+        key: 'dashboard-scanner',
+        label: 'Scanner QR',
+        url: '/scanner',
+        parentKey: 'dashboard',
       }
     ],
   },

@@ -2,6 +2,7 @@ import type { Route } from '@angular/router'
 import { IndexComponent } from './dashboards/index/index.component'
 import { RegistroAsistenComponent } from './dashboards/registro-asistente/registro-asistente.component'
 import { BuscadorComponent } from './dashboards/buscador/buscador.component'
+import { ScannerComponent } from './dashboards/scanner/scanner.component'
 // import { DashboardComponent } from './dashboard/dashboard.component'
 
 export const VIEWS_ROUTES: Route[] = [
@@ -30,6 +31,11 @@ export const VIEWS_ROUTES: Route[] = [
     path: 'buscador',
     component: BuscadorComponent,
     data: { title: 'buscador' },
+  },
+  {
+    path:'scanner',
+    component:ScannerComponent,
+    data:{ title:'scanner'}
   }
 
 ]
