@@ -1,46 +1,4 @@
-<breadcrumb [title]="'Alumnos Registrados'" />
-
-<div class="d-flex justify-content-end mb-3">
-  <button class="btn btn-primary" [routerLink]="['/auth/registro-simposio']">
-    Registrar nuevo participante
-  </button>
-</div>
-
-<div class="container bg-light rounded p-3 mb-3 border col-12">
-  <div class="row row-cols-2 row-cols-md-3 g-2 g-lg-3">
-    <!-- 👇 Tus 3 tarjetas, SIN cambios -->
-    <div class="col">
-      <div class="earnings-section">
-        <div class="d-flex gap-2 align-items-center">
-          <h6 class="mb-0 fw-normal fs-16">Registrados</h6>
-        </div>
-        <h4 class="my-2 text-dark">{{asistentesList.length}}</h4>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="earnings-section">
-        <div class="d-flex gap-2 align-items-center">
-          <h6 class="mb-0 fw-normal fs-16">Esperados</h6>
-        </div>
-        <h4 class="my-2 text-dark">{{esperados}}</h4>
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="earnings-profit mt-md-0 mt-2">
-        <div class="ms-md-3">
-          <div class="d-flex gap-2 align-items-center">
-            <h6 class="mb-0 fw-normal fs-16">Total de ingresos</h6>
-          </div>
-          <h4 class="my-2 text-dark">Q {{totalIngresos}}</h4>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
+<!-- 🔥 La tabla, ahora SÍ correcta 🔥 -->
 <div class="row">
   <div class="col-12">
     <div class="card">
@@ -54,11 +12,11 @@
                 <th>Correo</th>
                 <th>Carnet</th>
                 <th>Teléfono</th>
-                <th>Acciones</th>
+                <th>Acciones</th> <!-- 👈 Agregado -->
               </tr>
             </thead>
             <tbody>
-              @for (item of asistentesList; track $index) {
+              @for (item of listado$ | async; track $index) {
                 <tr>
                   <td class="ps-0">
                     <p class="d-inline-block align-middle mb-0">
@@ -71,7 +29,6 @@
                       'bg-danger-subtle text-danger': item.participant_type == 'estudiante_umg',
                       'bg-secondary-subtle text-secondary': item.participant_type == 'catedratico_umg',
                       'bg-info-subtle text-info': item.participant_type == 'externo',
-                      'bg-success-subtle text-success': item.status == 'Completed'
                     }">
                       {{ item.participant_type }}
                     </span>
@@ -81,14 +38,10 @@
                   <td>{{ item.phone }}</td>
                   <td class="text-end">
                     <button
-                      *ngIf="item.status === 'Pendiente'"
                       class="btn btn-sm btn-success"
                       (click)="openModal(scrollableModal, { scrollable: true })">
-                      Confirmar
+                      Ver Comprobante
                     </button>
-                    <span *ngIf="item.status === 'Confirmado'" class="badge bg-success-subtle text-success">
-                      Confirmado
-                    </span>
 
                     <div class="card-body">
 
@@ -128,7 +81,7 @@
                           >
                             Cerrar
                           </button>
-                          <button type="button" class="btn btn-primary" (click)="confirmarParticipante(item.id)">Confirmar</button>
+                          <!--<button type="button" class="btn btn-primary" (click)="confirmarParticipante(item.id)">Confirmar</button>-->
                         </div>
                       </ng-template>
                     </div>
@@ -136,6 +89,7 @@
                 </tr>
               }
             </tbody>
+
           </table>
         </div>
       </div>

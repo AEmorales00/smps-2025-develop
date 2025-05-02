@@ -13,14 +13,16 @@ import {
   Renderer2,
   RendererFactory2,
 } from '@angular/core'
-import { RouterLink } from '@angular/router'
+import { FormsModule } from '@angular/forms'
+import { Router, RouterLink } from '@angular/router'
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap'
+import { BuscadorService } from '@views/dashboards/buscador/buscador.service'
 import * as feather from 'feather-icons'
 import { SimplebarAngularModule } from 'simplebar-angular'
 
 @Component({
   selector: 'app-topbar',
-  imports: [NgbDropdownModule, SimplebarAngularModule, RouterLink, CommonModule,],
+  imports: [NgbDropdownModule, SimplebarAngularModule, RouterLink, CommonModule, FormsModule],
   templateUrl: './topbar.component.html',
   styles: ``,
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -28,6 +30,7 @@ import { SimplebarAngularModule } from 'simplebar-angular'
 export class TopbarComponent {
   isSidebarVisible = true
   isFullscreen: boolean = false
+  terminoBusqueda: string = '';
   // private theme: string = 'light';
   private config = { theme: 'light' };
   constructor(
@@ -36,7 +39,9 @@ export class TopbarComponent {
     @Inject(DOCUMENT) private document: any,
     private cdr: ChangeDetectorRef,
     private themeService: ThemeService,
-    rendererFactory: RendererFactory2
+    rendererFactory: RendererFactory2,
+    private router: Router,
+    private bucadorService: BuscadorService
   ) { this.renderer = rendererFactory.createRenderer(null, null); }
 
   elem: any
@@ -48,7 +53,7 @@ export class TopbarComponent {
     feather.replace();
   }
 
- 
+
   get theme(): string {
     return this.themeService.getTheme();
   }
@@ -105,7 +110,7 @@ export class TopbarComponent {
       }
       this.isFullscreen = false;
     }
-  
+
     setTimeout(() => {
       feather.replace();
       const fullscreenIcon = document.getElementById('fullscreen-icon');
@@ -115,4 +120,17 @@ export class TopbarComponent {
       }
     });
   }
+
+  buscar() {
+    const termino = this.terminoBusqueda.trim();
+    console.log('hols',termino);
+     if (termino) {
+        this.bucadorService.getBuscador(termino).then((response: any) => {
+          this.router.navigate(['/buscador'])
+        }).catch((error: any) => {
+          console.error('Error al buscar:', error);
+        });
+     }
+  }
+
 }

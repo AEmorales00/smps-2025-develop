@@ -29,7 +29,7 @@ export class IndexService {
         });
     });
   }
-  
+
 
   downloadCertificado(participantId: number): Promise<void> {
     const url = `cert/${participantId}/pdf`;
@@ -49,6 +49,18 @@ export class IndexService {
         });
     });
   }
-  
-  
+
+  getComprobante(nombre: string): Promise<Blob> {
+    const url = `dashboard/comprobante/${nombre}`;
+    return new Promise((resolve, reject) => {
+      this.apiservice.GetMethodBlob(url, 'No se pudo descargar el certificado.')
+        .subscribe({
+          next: (blob: Blob) => resolve(blob),
+          error: (err: any) => reject(err)
+        });
+    });
+  }
+
+
+
 }

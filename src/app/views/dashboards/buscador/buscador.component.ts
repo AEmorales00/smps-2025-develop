@@ -1,49 +1,39 @@
-import { AsistentesInterface } from './../../../models/asistentes.model';
-import { Component, TemplateRef } from '@angular/core';
-import { BreadcrumbComponent } from '../../../components/breadcrumb/breadcrumb.component';
+import { ResultadoBusqueda } from '@/app/models/resultadoBusqueda.model';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BuscadorService } from './buscador.service';
+import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { IndexService } from './index.service';
-import { RouterModule } from '@angular/router'; // ✅ Ya agregado
-import { NgbModal, NgbModalModule, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { IndexService } from '../index/index.service';
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-index',
-  standalone: true,
-  imports: [
-    BreadcrumbComponent,
-    CommonModule,
-    RouterModule, // ✅ Ya agregado
-    NgbModalModule
-  ],
-  templateUrl: './index.component.html',
-  styles: ``
+  selector: 'buscador',
+  templateUrl: 'buscador.component.html',
+  imports: [CommonModule],
 })
-export class IndexComponent {
+
+export class BuscadorComponent implements OnInit {
+  listado$: Observable<ResultadoBusqueda[]> = new Observable<ResultadoBusqueda[]>();
+
   todoData: any;
   totalIngresos: number = 0;
-  asistentesList: AsistentesInterface[] = [];
   esperados: number = 300;
   registrados: number = 0;
   faltantes: number = 0;
   comment: string = '';
   comprobanteUrl: string | null = null;
 
-  constructor(private indexService: IndexService, private modalService: NgbModal) {}
-
-  ngOnInit(): void {
-    this.getAsistentes();
+  constructor(private buscadorService: BuscadorService,
+    private indexService: IndexService,
+    private modalService: NgbModal
+  ) {
+    this.listado$= this.buscadorService.listado$;
   }
 
-  getAsistentes() {
-    this.indexService.getAsistentes()
-      .then(response => {
-        this.asistentesList = response;
-        this.registrados = response.length;
-        this.faltantes = this.esperados - this.registrados;
-      })
-      .catch(error => {
-      });
-  }
+
+
+  ngOnInit() {console.log('BuscadorComponent initialized', this.listado$);}
+
 
   confirmarPago(participantId: number) {
     if (!confirm('¿Seguro que deseas confirmar este participante?')) return;
@@ -54,13 +44,13 @@ export class IndexComponent {
       .then(() => {
         alert('¡Participante confirmado exitosamente! ✅');
         this.indexService.downloadCertificado(participantId);
-        this.getAsistentes();
       })
       .catch((error) => {
         console.error(error);
         alert('❌ Error al confirmar participante.');
       });
   }
+
   confirmarParticipante(participantId: number) {
     if (!confirm('¿Estás seguro de confirmar este participante?')) return;
 
@@ -70,7 +60,6 @@ export class IndexComponent {
       .then(() => {
         alert('✅ Participante confirmado exitosamente.');
         this.indexService.downloadCertificado(participantId);
-        this.getAsistentes();
       })
       .catch((error) => {
         console.error('Error al confirmar participante:', error);
