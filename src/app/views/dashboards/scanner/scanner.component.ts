@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { ScannerService } from './scanner.service';
 
 @Component({
   selector: 'scanner',
@@ -16,7 +17,7 @@ export class ScannerComponent implements OnInit {
   selectedDevice: MediaDeviceInfo | undefined;
   result:any
 
-  constructor() { }
+  constructor(private scanerService: ScannerService) { }
 
   ngOnInit(): void {
     navigator.mediaDevices.enumerateDevices().then(devices => {
@@ -33,7 +34,14 @@ export class ScannerComponent implements OnInit {
   }
 
   onCodeResult(result: string): void {
-    console.log('QR Result:', result);
-    this.result= result
+    const body={qr_code: result }
+    this.scanerService.postUsuarioAsistente(body)
+    .then((responser)=>{
+      this.result= result
+      alert('✅ Codigo QR escaneado correctamente.');
+      })
+      .catch((error) => {
+        alert('❌ Ocurrió un error al escanera codico qr del participante.');
+      });
   }
 }
