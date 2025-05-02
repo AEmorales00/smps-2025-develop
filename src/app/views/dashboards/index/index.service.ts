@@ -61,6 +61,17 @@ export class IndexService {
     });
   }
 
+  eliminarParticipante(id_participante:number){
+    const url= `admin/participant/${id_participante}`
+    return new Promise((resolve, reject)=>{
+      this.apiservice.deleteMethod(url, 'Error al borrar participante')
+      .subscribe(
+        {next: (response: any) => resolve(response),
+          error: (err: any) => reject(err)}
+      )
+    })
+  }
+
 
 
 }

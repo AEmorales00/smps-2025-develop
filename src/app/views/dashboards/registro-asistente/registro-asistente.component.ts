@@ -1,10 +1,10 @@
 import { datosUsuarioAsistenteDTO, FormModel } from '@/app/models/registroAsistenteSimposio.model';
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BreadcrumbComponent } from '@components/breadcrumb/breadcrumb.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { rolesList, RolUsuarioInterface, Tallas, tallasList } from '@views/auth/registro/datos-seleccionable';
+import { MetodoPago, rolesList, RolUsuarioInterface, Tallas, tallasList, metodoPagos } from '@views/auth/registro/datos-seleccionable';
 import { RegistroAsistentesService } from '@views/auth/registro/registro.service';
 import { registroAsistenteService } from './resgistro-asistente.service';
 
@@ -17,14 +17,17 @@ import { registroAsistenteService } from './resgistro-asistente.service';
 export class RegistroAsistenComponent implements OnInit {
 
   rolUsuario: RolUsuarioInterface[] = rolesList;
+  listMetodosPago: MetodoPago[] = metodoPagos
   registroForm: FormGroup;
   selectedFile: File | null = null;  // Almacena el archivo seleccionado
   tallas: Tallas[] = tallasList
   participant_type_student= rolesList[0].descripcion
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
   private modalService = inject(NgbModal)
   @ViewChild('standardModal') standardModal: any;
   isLoading = false;
+  file:any
 
   constructor(private fb: FormBuilder, private registroAsistentesService: registroAsistenteService) {
     this.registroForm = this.fb.group({
@@ -70,12 +73,13 @@ export class RegistroAsistenComponent implements OnInit {
 
         this.registroAsistentesService.postUsuarioAsistente(formData)
           .then(res =>{
-            this.registroForm.reset();
+            this.isLoading = false;
             this.modalService.open(this.standardModal);
-            this.isLoading = false;
-          },error=>{
-            this.isLoading = false;
-        })
+            this.file = null;
+            this.selectedFile = null;
+            this.fileInput.nativeElement.value = '';
+            this.registroForm.reset();
+          })
       }
     }
 }

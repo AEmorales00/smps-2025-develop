@@ -78,13 +78,14 @@ export class IndexComponent {
       });
   }
 
-  openModal(content: TemplateRef<HTMLElement>, options: NgbModalOptions) {
-    this.indexService.getComprobante('umg1.png')
+  openModal(content: TemplateRef<HTMLElement>, options: NgbModalOptions, personaId:number) {
+    this.indexService.getComprobante(`comprobante_${personaId}.png`)
       .then((blob: Blob) => {
         this.comprobanteUrl = URL.createObjectURL(blob);
         this.modalService.open(content, options);
       })
       .catch((err) => {
+        alert('Comprobante no encontrado .');
         console.error('Error al obtener el comprobante', err);
       });
   }
@@ -96,6 +97,15 @@ export class IndexComponent {
       URL.revokeObjectURL(this.comprobanteUrl); // 👈 Liberar memoria
       this.comprobanteUrl = null;
     }
+  }
+
+  elimanarParticipante(person_id:number){
+    this.indexService.eliminarParticipante(person_id)
+    .then(resonse=>{
+      this.getAsistentes()
+      alert('Participante Eliminado correctamente');
+    })
+
   }
 
 

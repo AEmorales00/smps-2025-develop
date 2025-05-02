@@ -81,7 +81,7 @@
 
           <div class="row gap-2 mb-2">
             <div class="col">
-              <label for="rolId" class="form-label">Rol</label>
+              <label for="rolId" class="form-label">Tipo Participante</label>
               <select class="form-select" id="rolId" formControlName="rolId">
                 <option [value]="rol.descripcion" *ngFor="let rol of rolUsuario">{{ rol.descripcion }}</option>
               </select>
@@ -100,23 +100,21 @@
 
           <div class="col">
             <label for="metodo_pago" class="form-label">Método de Pago</label>
-            <input
-              type="text"
-              id="metodo_pago"
-              class="form-control"
-              formControlName="metodo_pago"
-            />
+            <select class="form-select" id="metodo_pago" formControlName="metodo_pago">
+              <option [value]="metodo.payment_method" *ngFor="let metodo of listMetodosPago" class="">{{ metodo.payment_method }}</option>
+            </select>
           </div>
 
           <div class="mb-2">
             <label for="formFile" class="form-label">Comprobante de pago</label>
             <input
-              class="form-control"
-              type="file"
-              id="formFile"
-              accept="image/jpeg, image/png"
-              (change)="onFileSelected($event)"
-            />
+            #fileInput
+            class="form-control"
+            type="file"
+            id="formFile"
+            accept="image/jpeg, image/png"
+            (change)="onFileSelected($event)"
+          />
             <div *ngIf="registroForm.get('comprobante')?.invalid && registroForm.get('comprobante')?.touched" class="text-danger">
               El archivo es requerido.
             </div>

@@ -83,12 +83,18 @@
                     <button
                       *ngIf="item.status === 'Pendiente'"
                       class="btn btn-sm btn-success"
-                      (click)="openModal(scrollableModal, { scrollable: true })">
+                      (click)="openModal(scrollableModal, { scrollable: true }, item.id)">
                       Confirmar
                     </button>
                     <span *ngIf="item.status === 'Confirmado'" class="badge bg-success-subtle text-success">
                       Confirmado
                     </span>
+                    <button
+                      *ngIf="item.status === 'Pendiente'"
+                      class="btn btn-sm btn-light ml-2"
+                      (click)="elimanarParticipante(item.id)">
+                      Eliminar
+                    </button>
 
                     <div class="card-body">
 

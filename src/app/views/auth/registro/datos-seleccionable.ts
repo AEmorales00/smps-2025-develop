@@ -41,3 +41,20 @@ export const tallasList: Tallas[]= [
   }
 
 ]
+
+export interface MetodoPago{
+  payment_method:string
+}
+
+export const metodoPagos:MetodoPago[]=[
+  {
+    payment_method:'boleta'
+
+  },
+  {
+    payment_method:'efectivo'
+  }
+
+]
+
+
