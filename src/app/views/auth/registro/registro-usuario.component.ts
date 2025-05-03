@@ -49,7 +49,6 @@ export class RegistroUsuariosComponent implements OnInit {
   ngOnInit() {}
 
   onFileSelected(event: any): void {
-    console.log(event)
     this.file = (event.target as HTMLInputElement).files?.[0];
     if (this.file) {
       this.selectedFile = this.file;

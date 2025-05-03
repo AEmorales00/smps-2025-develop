@@ -61,6 +61,15 @@ export class SignInComponent {
           this.isLoading = false
           this.route.navigate(['index'])
         })
+        .catch(err => {
+          const errorMessage = err.error?.error || 'Error inesperado al registrar.';
+          alert(`❌ ${errorMessage}`);
+          this.isLoading = false
+        });
+    } else {
+      alert('❌ Las credenciales no son validas.');
+      this.isLoading = false
+    }
       //this.store.dispatch(login({ email: email, password: password }))
 
       this.store.select(getError).subscribe((data) => {
@@ -73,5 +82,5 @@ export class SignInComponent {
         }
       })
     }
-  }
 }
+

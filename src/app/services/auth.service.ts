@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 
 import { CookieService } from 'ngx-cookie-service'
-import type { Observable } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs'
 import { User } from '@store/authentication/auth.model'
 import { LoginService } from '@views/auth/sign-in/sign-in.service'
 import { CONSTANTS } from '@views/auth/constants'
@@ -12,6 +12,7 @@ import { ApiService } from '@core/services/api.service'
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   user: User | null = null
+  usurioLogueado:BehaviorSubject<any> = new BehaviorSubject<any>(null)
 
   public readonly authSessionKey = '_HANDO_AUTH_SESSION_KEY_'
 
@@ -37,6 +38,10 @@ export class AuthenticationService {
     );
   }
 
+  get usuarioLogueado$(){
+    return this.usurioLogueado.asObservable()
+  }
+
   postLogin(user: any) {
     const url = `auth/login`;
     return new Promise((resolve, reject) => {
@@ -47,6 +52,7 @@ export class AuthenticationService {
             // ✅ Guarda en sessionStorage, localStorage y cookie
             this.accessToken = response.token;
             this.saveSession(response.token);
+            this.usurioLogueado.next(response.user)
             resolve(response);
           },
           (error) => {
@@ -58,7 +64,7 @@ export class AuthenticationService {
 
   login(email: string, password: string): Observable<User> {
     return this.http.post<User>(`/api/login`, { email, password }).pipe(
-      map((user) => {
+      map((user:any) => {
         if (user && user.token) {
           this.user = user;
           this.accessToken = user.token;

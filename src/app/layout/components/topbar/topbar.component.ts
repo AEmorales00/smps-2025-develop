@@ -1,3 +1,5 @@
+import { AuthenticationService } from './../../../services/auth.service';
+import { UsuarioLogueado } from './../../../models/usuarioLogueado.model';
 import { ThemeService } from '@/app/services/theme.service'
 import { CommonModule, DOCUMENT } from '@angular/common'
 import {
@@ -18,6 +20,7 @@ import { Router, RouterLink } from '@angular/router'
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap'
 import { BuscadorService } from '@views/dashboards/buscador/buscador.service'
 import * as feather from 'feather-icons'
+import { Observable } from 'rxjs';
 import { SimplebarAngularModule } from 'simplebar-angular'
 
 @Component({
@@ -31,6 +34,8 @@ export class TopbarComponent {
   isSidebarVisible = true
   isFullscreen: boolean = false
   terminoBusqueda: string = '';
+  UsuarioLogueado$:Observable<UsuarioLogueado>
+
   // private theme: string = 'light';
   private config = { theme: 'light' };
   constructor(
@@ -41,8 +46,13 @@ export class TopbarComponent {
     private themeService: ThemeService,
     rendererFactory: RendererFactory2,
     private router: Router,
-    private bucadorService: BuscadorService
-  ) { this.renderer = rendererFactory.createRenderer(null, null); }
+    private bucadorService: BuscadorService,
+    private authService: AuthenticationService
+  ) { this.renderer = rendererFactory.createRenderer(null, null);
+
+    this.UsuarioLogueado$=this.authService.usuarioLogueado$
+    console.log(this.UsuarioLogueado$)
+  }
 
   elem: any
 

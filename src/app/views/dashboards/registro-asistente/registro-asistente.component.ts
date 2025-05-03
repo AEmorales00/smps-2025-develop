@@ -7,6 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MetodoPago, rolesList, RolUsuarioInterface, Tallas, tallasList, metodoPagos } from '@views/auth/registro/datos-seleccionable';
 import { RegistroAsistentesService } from '@views/auth/registro/registro.service';
 import { registroAsistenteService } from './resgistro-asistente.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'registro-asistente',
@@ -29,7 +30,7 @@ export class RegistroAsistenComponent implements OnInit {
   isLoading = false;
   file:any
 
-  constructor(private fb: FormBuilder, private registroAsistentesService: registroAsistenteService) {
+  constructor(private fb: FormBuilder, private registroAsistentesService: registroAsistenteService, private router:Router) {
     this.registroForm = this.fb.group({
       nombres: ['', [Validators.required, Validators.minLength(2)]],
       apellidos: ['', [Validators.required, Validators.minLength(2)]],
@@ -59,8 +60,6 @@ export class RegistroAsistenComponent implements OnInit {
 
         // Asegurar que el formulario detecte el cambio
         this.registroForm.get('comprobante')?.updateValueAndValidity();
-
-        console.log('Archivo seleccionado:', file);
       }
     }
 
@@ -75,11 +74,15 @@ export class RegistroAsistenComponent implements OnInit {
           .then(res =>{
             this.isLoading = false;
             this.modalService.open(this.standardModal);
-            this.file = null;
-            this.selectedFile = null;
-            this.fileInput.nativeElement.value = '';
-            this.registroForm.reset();
-          })
+            this.router.navigate(['index'])
+          }).catch(err => {
+            const errorMessage = err.error?.error || 'Error inesperado al registrar.';
+            alert(`❌ ${errorMessage}`);
+            this.isLoading = false;
+          });
+      } else {
+        alert('❌ Por favor llena todos los campos correctamente antes de enviar.');
       }
+
     }
 }

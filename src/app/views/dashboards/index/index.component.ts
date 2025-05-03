@@ -40,6 +40,7 @@ export class IndexComponent {
         this.asistentesList = response;
         this.registrados = response.length;
         this.faltantes = this.esperados - this.registrados;
+        this.totalIngresos= this.registrados * 350
       })
       .catch(error => {
       });

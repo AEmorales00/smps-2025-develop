@@ -41,7 +41,8 @@ export class ScannerComponent implements OnInit {
       alert('✅ Codigo QR escaneado correctamente.');
       })
       .catch((error) => {
-        alert('❌ Ocurrió un error al escanera codico qr del participante.');
+        alert('❌ Ocurrió un error al escanear código QR del participante.\n' + error);
       });
+
   }
 }
