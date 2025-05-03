@@ -1,4 +1,5 @@
 import { AsistentesInterface } from '@/app/models/asistentes.model';
+import { Summary } from '@/app/models/sumarry.model';
 import { Injectable } from '@angular/core';
 import { ApiService } from '@core/services/api.service';
 
@@ -70,6 +71,18 @@ export class IndexService {
           error: (err: any) => reject(err)}
       )
     })
+  }
+
+  getSummary(){
+    const url = `dashboard/summary`;
+  return new Promise((resolve, reject) => {
+    this.apiservice.GetMethod<Summary>(url, 'Error al obtener los datos.')
+      .subscribe({
+        next: (response: Summary) => resolve(response),
+        error: (err: any) => reject(err)
+      });
+  });
+
   }
 
 

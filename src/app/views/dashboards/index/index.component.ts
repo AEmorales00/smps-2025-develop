@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { IndexService } from './index.service';
 import { RouterModule } from '@angular/router'; // ✅ Ya agregado
 import { NgbModal, NgbModalModule, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { Summary } from '@/app/models/sumarry.model';
 
 @Component({
   selector: 'app-index',

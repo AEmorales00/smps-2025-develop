@@ -25,15 +25,19 @@ export class ScannerComponent implements OnInit {
       const videoDevices = devices.filter(device => device.kind === 'videoinput');
       if (videoDevices.length > 0) {
         this.selectedDevice = videoDevices[0];
-        console.log('Cámara seleccionada:', this.selectedDevice);
       } else {
-        console.warn('No se encontraron cámaras.');
       }
 
     });
   }
 
   onCodeResult(result: string): void {
+    if (this.result === result) {
+      alert('El código QR ya fue procesado:'+ result);
+      return;
+    }
+    this.result = result;
+
     const body={qr_code: result }
     this.scanerService.postUsuarioAsistente(body)
     .then((responser)=>{
@@ -41,8 +45,7 @@ export class ScannerComponent implements OnInit {
       alert('✅ Codigo QR escaneado correctamente.');
       })
       .catch((error) => {
-        alert('❌ Ocurrió un error al escanear código QR del participante.\n' + error);
+        alert('❌ Ocurrió un error al escanear código QR del participante.\n' + JSON.stringify(error.error));
       });
-
   }
 }
